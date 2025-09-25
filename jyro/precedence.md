@@ -5,6 +5,7 @@ parent: Jyro
 has_children: false
 has_toc: false
 permalink: /jyro/precedence/
+nav_order: 100
 ---
 
 # Operator Precedence Summary

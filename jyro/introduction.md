@@ -5,6 +5,7 @@ parent: Jyro
 has_children: false
 has_toc: false
 permalink: /jyro/introduction/
+nav_order: 20
 ---
 
 # Introduction to the Language

@@ -5,6 +5,7 @@ parent: Jyro
 has_children: false
 has_toc: false
 permalink: /jyro/comments/
+nav_order: 30
 ---
 
 # Comments
