@@ -2,7 +2,7 @@
 layout: default
 title: Standard Library Functions
 parent: Function Calls
-has_children: false
+has_children: true
 has_toc: false
 permalink: /jyro/functions/stdlib
 ---
