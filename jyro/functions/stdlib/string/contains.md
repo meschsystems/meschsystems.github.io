@@ -5,7 +5,6 @@ parent: Standard Library Functions
 has_children: false
 has_toc: false
 permalink: /jyro/functions/stdlib/string/contains/
-nav_order: 10
 ---
 
 # Contains
@@ -20,7 +19,7 @@ Contains(source, searchValue)
 
 ## Parameters
 
-- **source** (string|array): The source value to search within
+- **source** (string or array): The source value to search within
 - **searchValue** (any): The value to search for
 
 ## Returns
