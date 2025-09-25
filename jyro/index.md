@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Jyro
-has_children: true
-has_toc: true
+title: About Jyro
+has_children: false
+has_toc: false
 permalink: /jyro/
 ---
 

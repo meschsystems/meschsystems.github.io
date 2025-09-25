@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Control Flow
-parent: Jyro Language Syntax
+parent: Jyro
 has_children: true
 has_toc: true
 permalink: /jyro/control-flow/

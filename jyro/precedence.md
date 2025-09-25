@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Operator Precedence Summary
-parent: Jyro Language Syntax
+parent: Jyro
 has_children: false
 has_toc: false
 permalink: /jyro/precedence/

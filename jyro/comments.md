@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Comments
-parent: Jyro Language Syntax
+parent: Jyro
 has_children: false
 has_toc: false
 permalink: /jyro/comments/

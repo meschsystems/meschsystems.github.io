@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Type Operations
-parent: Jyro Language Syntax
+parent: Jyro
 has_children: true
-has_toc: false
+has_toc: true
 permalink: /jyro/types/
 ---
 
