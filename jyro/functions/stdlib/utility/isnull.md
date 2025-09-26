@@ -4,7 +4,7 @@ title: IsNull
 parent: Standard Library Functions
 has_children: false
 has_toc: false
-permalink: /jyro/functions/stdlib/isnull/
+permalink: /jyro/functions/stdlib/utility/isnull/
 ---
 
 # IsNull

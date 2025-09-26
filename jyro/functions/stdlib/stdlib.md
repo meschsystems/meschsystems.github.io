@@ -70,6 +70,7 @@ Miscellaneous functions for inspecting and testing data types, value generation,
 - [**Exists**](stdlib/utility/exists/) - Test if value is not null
 - [**IsNull**](stdlib/utility/isnull/) - Test if value is null
 - [**Length**](stdlib/utility/length/) - Get length/count of strings, arrays, or objects
+- [**NewGuid**](stdlib/utility/newguid) - Generate a new globally unique identifier (GUID)
 - [**NotEqual**](stdlib/utility/notequal/) - Test inequality between two values
 - [**TypeOf**](stdlib/utility/typeof/) - Get type name of value as string
 

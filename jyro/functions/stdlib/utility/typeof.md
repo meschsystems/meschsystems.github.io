@@ -4,7 +4,7 @@ title: TypeOf
 parent: Standard Library Functions
 has_children: false
 has_toc: false
-permalink: /jyro/functions/stdlib/typeof/
+permalink: /jyro/functions/stdlib/utility/typeof/
 ---
 
 # TypeOf

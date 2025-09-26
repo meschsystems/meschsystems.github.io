@@ -4,7 +4,7 @@ title: NotEqual
 parent: Standard Library Functions
 has_children: false
 has_toc: false
-permalink: /jyro/functions/stdlib/notequal/
+permalink: /jyro/functions/stdlib/utility/notequal/
 ---
 
 # NotEqual

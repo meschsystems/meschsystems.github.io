@@ -4,7 +4,7 @@ title: Exists
 parent: Standard Library Functions
 has_children: false
 has_toc: false
-permalink: /jyro/functions/stdlib/exists/
+permalink: /jyro/functions/stdlib/utility/exists/
 ---
 
 # Exists

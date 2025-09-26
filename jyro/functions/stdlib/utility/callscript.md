@@ -4,7 +4,7 @@ title: CallScript
 parent: Standard Library Functions
 has_children: false
 has_toc: false
-permalink: /jyro/functions/stdlib/callscript/
+permalink: /jyro/functions/stdlib/utility/callscript/
 ---
 
 # CallScript

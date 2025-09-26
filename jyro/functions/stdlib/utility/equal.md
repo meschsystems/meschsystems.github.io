@@ -4,7 +4,7 @@ title: Equal
 parent: Standard Library Functions
 has_children: false
 has_toc: false
-permalink: /jyro/functions/stdlib/equal/
+permalink: /jyro/functions/stdlib/utility/equal/
 ---
 
 # Equal
