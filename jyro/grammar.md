@@ -29,8 +29,8 @@ statement
     | returnStmt
     | breakStmt
     | continueStmt
-    | incDecStmt                  // e.g., x++  or  a.b[i]--
-    | exprStmt                    // any expression (incl. assignment, call, literals)
+    | incDecStmt
+    | exprStmt
     ;
 
 variableDecl
@@ -101,8 +101,10 @@ assignmentExpr
     | assignmentTarget ASSIGN assignmentExpr              #AssignMake
     ;
 
+// Assignment targets: identifiers or Data.* chains
 assignmentTarget
     : Identifier (memberOrIndex)*
+    | DATA (memberOrIndex)+
     ;
 
 conditionalExpr
@@ -156,6 +158,7 @@ memberOrIndex
 primaryExpr
     : literal
     | Identifier
+    | DATA (memberOrIndex)+
     | LPAREN expression RPAREN
     | objectLiteral
     | arrayLiteral
@@ -194,7 +197,7 @@ argList
     ;
 
 // -----------------------
-// Lexer rules (keywords first)
+// Lexer rules
 // -----------------------
 
 // Keywords / operators (case-sensitive)
@@ -230,6 +233,9 @@ BOOLEAN_T  : 'boolean';
 OBJECT_T   : 'object';
 ARRAY_T    : 'array';
 
+// Reserved root
+DATA       : 'Data';
+
 // Punctuation / operators
 INCR       : '++';
 DECR       : '--';
@@ -260,10 +266,10 @@ RBRACK     : ']';
 // Identifiers
 Identifier : Letter (Letter | Digit | '_')* ;
 
-// Numbers: integers and decimals (no exponent for now; easy to extend)
+// Numbers: integers and decimals
 Number     : Digit+ ('.' Digit+)? ;
 
-// Strings: double-quoted, with standard escapes; no raw multi-line strings
+// Strings: double-quoted with escapes
 String
     : '"' ( EscapeSeq | ~["\\\r\n] )* '"'
     ;
@@ -277,8 +283,7 @@ fragment Letter : [A-Za-z] ;
 fragment Digit  : [0-9] ;
 fragment Hex    : [0-9A-Fa-f] ;
 
-// Whitespace & comments (insignificant)
-// Newline terminates a comment; comments are skipped.
+// Whitespace & comments
 WS       : [ \t\r\n]+ -> skip ;
 COMMENT  : '#' ~[\r\n]* -> skip ;
 ```
