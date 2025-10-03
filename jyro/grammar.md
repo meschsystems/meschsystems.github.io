@@ -64,7 +64,7 @@ ifStmt
 switchStmt
     : SWITCH expression DO
         (CASE expression THEN statement*)*
-        (DEFAULT statement*)?
+        (DEFAULT THEN statement*)?
       END
     ;
 
