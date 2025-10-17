@@ -27,7 +27,7 @@ Base64Encode(input)
 
 ## Description
 
-Converts the input string to bytes using UTF-8 encoding, then encodes those bytes as a Base64 string. The Base64 format can be safely transmitted over text-based protocols.
+Converts the input string to bytes using UTF-8 encoding, then encodes those bytes as a Base64 string. The Base64 format string can then be safely transmitted over text-based protocols. See [**InvokeRestMethod()**](invokerestmethod)
 
 ## Examples
 
