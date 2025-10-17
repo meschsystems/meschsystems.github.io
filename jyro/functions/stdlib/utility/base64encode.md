@@ -27,7 +27,7 @@ Base64Encode(input)
 
 ## Description
 
-Converts the input string to bytes using UTF-8 encoding, then encodes those bytes as a Base64 string. This is useful for encoding binary data or text in a format that can be safely transmitted over text-based protocols.
+Converts the input string to bytes using UTF-8 encoding, then encodes those bytes as a Base64 string. The Base64 format can be safely transmitted over text-based protocols.
 
 ## Examples
 
