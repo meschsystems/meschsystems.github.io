@@ -41,6 +41,7 @@ Functions for manipulating and processing array data structures.
 
 - [**Append**](stdlib/array/append/) - Add value to end of array
 - [**Clear**](stdlib/array/clear/) - Remove all elements from array
+- [**IndexOf**](stdlib/array/indexof/) - Find index of element in array using deep equality
 - [**Insert**](stdlib/array/insert/) - Insert value at specific array index
 - [**MergeArrays**](stdlib/array/mergearrays/) - Combine multiple arrays into single array
 - [**RemoveAt**](stdlib/array/removeat/) - Remove element at specific index
@@ -68,6 +69,7 @@ Miscellaneous functions for inspecting and testing data types, value generation,
 - [**CallScript**](stdlib/utility/callscript/) - Execute Jyro script with isolated data context
 - [**Equal**](stdlib/utility/equal/) - Test equality between two values
 - [**Exists**](stdlib/utility/exists/) - Test if value is not null
+- [**InvokeRestMethod**](stdlib/utility/invokerestmethod/) - Execute HTTP REST API requests (experimental)
 - [**IsNull**](stdlib/utility/isnull/) - Test if value is null
 - [**Length**](stdlib/utility/length/) - Get length/count of strings, arrays, or objects
 - [**NewGuid**](stdlib/utility/newguid) - Generate a new globally unique identifier (GUID)
