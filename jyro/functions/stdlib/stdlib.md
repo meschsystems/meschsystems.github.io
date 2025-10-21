@@ -34,6 +34,7 @@ Functions for processing and transforming text data.
 - [**StartsWith**](stdlib/string/startswith/) - Test if string begins with specified prefix
 - [**Trim**](stdlib/string/trim/) - Remove leading and trailing whitespace
 - [**Upper**](stdlib/string/upper/) - Convert string to uppercase
+- [**ToNumber**](stdlib/string/tonumber/) - Convert a string to a number
 
 ## Array Operations
 
