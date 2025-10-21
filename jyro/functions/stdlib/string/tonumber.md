@@ -29,8 +29,6 @@ ToNumber(text)
 
 Parses numeric strings using culture-invariant formatting rules to ensure consistent number parsing behavior across different system locales and cultural settings. If the string cannot be parsed as a valid number, the function returns zero.
 
-This function is particularly useful for converting form input, query parameters, or user-provided text into numeric values for mathematical operations or database storage.
-
 ## Examples
 
 ```jyro
@@ -51,16 +49,4 @@ var result4 = ToNumber("invalid")      # Returns 0
 
 ```jyro
 var result5 = ToNumber("")             # Returns 0
-```
-
-```jyro
-# Common use case: Converting form data
-var userId = ToNumber(Data.request.body.id)
-var user = GetUser(userId)
-```
-
-```jyro
-# Common use case: Converting query parameters
-var pageNumber = ToNumber(Data.request.query.page)
-var items = GetItemsForPage(pageNumber)
 ```
