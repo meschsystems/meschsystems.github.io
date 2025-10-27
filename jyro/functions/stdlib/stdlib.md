@@ -42,6 +42,7 @@ Functions for manipulating and processing array data structures.
 
 - [**Append**](stdlib/array/append/) - Add value to end of array
 - [**Clear**](stdlib/array/clear/) - Remove all elements from array
+- [**CountIf**](stdlib/array/countif/) - Count elements where field equals specified value
 - [**IndexOf**](stdlib/array/indexof/) - Find index of element in array using deep equality
 - [**Insert**](stdlib/array/insert/) - Insert value at specific array index
 - [**MergeArrays**](stdlib/array/mergearrays/) - Combine multiple arrays into single array
