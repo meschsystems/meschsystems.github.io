@@ -42,14 +42,18 @@ Functions for manipulating and processing array data structures.
 
 - [**Append**](stdlib/array/append/) - Add value to end of array
 - [**Clear**](stdlib/array/clear/) - Remove all elements from array
-- [**CountIf**](stdlib/array/countif/) - Count elements where field equals specified value
+- [**CountIf**](stdlib/array/countif/) - Count elements where field matches value using comparison operator
+- [**Filter**](stdlib/array/filter/) - Return new array with elements matching field comparison criteria
+- [**First**](stdlib/array/first/) - Return first element of array without modifying it
 - [**IndexOf**](stdlib/array/indexof/) - Find index of element in array using deep equality
 - [**Insert**](stdlib/array/insert/) - Insert value at specific array index
+- [**Last**](stdlib/array/last/) - Return last element of array without modifying it
 - [**MergeArrays**](stdlib/array/mergearrays/) - Combine multiple arrays into single array
-- [**RemoveAt**](stdlib/array/removeat/) - Remove element at specific index
-- [**RemoveLast**](stdlib/array/removelast/) - Remove and return last array element
-- [**Reverse**](stdlib/array/reverse/) - Reverse order of array elements
-- [**Sort**](stdlib/array/sort/) - Sort array elements using type-aware comparison
+- [**Pop**](stdlib/array/pop/) - Remove and return last array element
+- [**RemoveAt**](stdlib/array/removeat/) - Remove element at specific index and return modified array
+- [**RemoveLast**](stdlib/array/removelast/) - Remove last element and return modified array
+- [**Reverse**](stdlib/array/reverse/) - Return new array with elements in reversed order
+- [**Sort**](stdlib/array/sort/) - Return new sorted array using type-aware comparison
 - [**SortByField**](stdlib/array/sortbyfield/) - Sort array of objects by specified field
 
 ## Date and Time Functions
@@ -68,6 +72,8 @@ Functions for handling date parsing, formatting, and calculations.
 
 Miscellaneous functions for inspecting and testing data types, value generation, and calling scripts.
 
+- [**Base64Decode**](stdlib/utility/base64decode) - Decode Base64-encoded string back to original format
+- [**Base64Encode**](stdlib/utility/base64encode) - Encode a string to Base64 format
 - [**CallScript**](stdlib/utility/callscript/) - Execute Jyro script with isolated data context
 - [**Equal**](stdlib/utility/equal/) - Test equality between two values
 - [**Exists**](stdlib/utility/exists/) - Test if value is not null
@@ -75,7 +81,6 @@ Miscellaneous functions for inspecting and testing data types, value generation,
 - [**IsNull**](stdlib/utility/isnull/) - Test if value is null
 - [**Length**](stdlib/utility/length/) - Get length/count of strings, arrays, or objects
 - [**NewGuid**](stdlib/utility/newguid) - Generate a new globally unique identifier (GUID)
-- [**Base64Encode**](stdlib/utility/base64encode) - Encodes a string to Base64 format
 - [**NotEqual**](stdlib/utility/notequal/) - Test inequality between two values
 - [**TypeOf**](stdlib/utility/typeof/) - Get type name of value as string
 
@@ -83,7 +88,9 @@ Miscellaneous functions for inspecting and testing data types, value generation,
 
 Most functions follow consistent patterns for parameter handling and return values:
 
-- **Mutation vs Immutation**: Array functions like `Sort` and `Reverse` modify arrays in-place, while functions like `MergeArrays` return new arrays
+- **Immutable Transformations**: Functions like `Sort`, `Reverse`, and `Filter` return new arrays without modifying the original, enabling predictable data flow and safe composition
+- **Chainable Operations**: Array-returning functions can be composed together (e.g., `Filter(Sort(Filter(...)))`) for powerful data transformations
 - **Type Coercion**: Functions automatically handle reasonable type conversions (e.g., converting values to strings in `Join`)
 - **Error Handling**: Functions return null or default values for invalid inputs rather than throwing exceptions
-- **Chaining Support**: Many functions return values that enable method chaining patterns
+- **Safe Access**: Functions like `First`, `Last`, and `Pop` return null for empty arrays instead of throwing errors
+- **Consistent Operators**: Functions like `Filter` and `CountIf` support comparison operators: `"=="`, `"!="`, `"<"`, `"<="`, `">"`, `">="`
