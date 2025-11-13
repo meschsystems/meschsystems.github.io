@@ -81,9 +81,9 @@ var response = InvokeRestMethod(
     newUser
 )
 
-if (response.isSuccessStatusCode) {
+if response.isSuccessStatusCode then
     Data.newUserId = response.content.id
-}
+end
 ```
 
 ### Error Handling
@@ -91,15 +91,15 @@ if (response.isSuccessStatusCode) {
 ```jyro
 var response = InvokeRestMethod("https://api.example.com/data", "GET")
 
-if (response.statusCode == 200) {
+if response.statusCode == 200 then
     Data.result = response.content
-} else if (response.statusCode == 404) {
+else if response.statusCode == 404 then
     Data.error = "Resource not found"
-} else if (response.statusCode == 401) {
+else if response.statusCode == 401 then
     Data.error = "Unauthorized - check credentials"
-} else {
+else
     Data.error = "Request failed: " + response.statusDescription
-}
+end
 ```
 
 ### PUT and DELETE Requests
@@ -136,9 +136,9 @@ Data.rateLimit = response.headers["X-RateLimit-Remaining"]
 Data.etag = response.headers["ETag"]
 
 # Check content type
-if (response.contentType == "application/json") {
+if response.contentType == "application/json" then
     Data.result = response.content
-}
+end
 ```
 
 ## Security Configuration
@@ -388,11 +388,11 @@ HTTP error status codes (4xx, 5xx) do not throw exceptions. Instead, they are re
 var response = InvokeRestMethod("https://api.example.com/data", "GET")
 
 # HTTP errors don't throw - check status
-if (response.statusCode >= 400 && response.statusCode < 500) {
+if response.statusCode >= 400 and response.statusCode < 500 then
     Data.error = "Client error: " + response.statusDescription
-} else if (response.statusCode >= 500) {
+else if response.statusCode >= 500 then
     Data.error = "Server error: " + response.statusDescription
-}
+end
 ```
 
 ## Limitations
