@@ -18,6 +18,7 @@ Functions for numeric calculations and mathematical operations.
 - [**Abs**](stdlib/math/abs/) - Calculate absolute value of a number
 - [**Max**](stdlib/math/max/) - Find maximum value from multiple arguments
 - [**Min**](stdlib/math/min/) - Find minimum value from multiple arguments
+- [**RandomInt**](stdlib/math/randomint/) - Generate cryptographically secure random integer within range
 - [**Round**](stdlib/math/round/) - Round number to specified decimal places
 - [**Sum**](stdlib/math/sum/) - Calculate sum of multiple numeric arguments
 
@@ -29,6 +30,7 @@ Functions for processing and transforming text data.
 - [**EndsWith**](stdlib/string/endswith/) - Test if string ends with specified suffix
 - [**Join**](stdlib/string/join/) - Join array elements into single string with delimiter
 - [**Lower**](stdlib/string/lower/) - Convert string to lowercase
+- [**RandomString**](stdlib/string/randomstring/) - Generate cryptographically secure random string from character set
 - [**Replace**](stdlib/string/replace/) - Replace all occurrences of substring with replacement
 - [**Split**](stdlib/string/split/) - Split string into array using delimiter
 - [**StartsWith**](stdlib/string/startswith/) - Test if string begins with specified prefix
@@ -50,11 +52,13 @@ Functions for manipulating and processing array data structures.
 - [**Last**](stdlib/array/last/) - Return last element of array without modifying it
 - [**MergeArrays**](stdlib/array/mergearrays/) - Combine multiple arrays into single array
 - [**Pop**](stdlib/array/pop/) - Remove and return last array element
+- [**RandomChoice**](stdlib/array/randomchoice/) - Select random element from array using cryptographically secure randomization
 - [**RemoveAt**](stdlib/array/removeat/) - Remove element at specific index and return modified array
 - [**RemoveLast**](stdlib/array/removelast/) - Remove last element and return modified array
 - [**Reverse**](stdlib/array/reverse/) - Return new array with elements in reversed order
 - [**Sort**](stdlib/array/sort/) - Return new sorted array using type-aware comparison
 - [**SortByField**](stdlib/array/sortbyfield/) - Sort array of objects by specified field
+- [**Take**](stdlib/array/take/) - Return new array containing first n elements without modifying original
 
 ## Date and Time Functions
 
