@@ -10,7 +10,7 @@ nav_order: 130
 
 # Function Calls
 
-Function calls invoke host-provided functions with optional arguments passed as expressions. Functions extend the language capabilities by providing access to external data sources, computational operations, and system services that are not built into the core language. Jyro comes with a comprehensive [**standard library**](stdlib/) of functions that provide data manipulation capabilities.
+Function calls invoke host-provided functions with optional arguments passed as expressions. Functions extend the language capabilities by providing access to external data sources, computational operations, and system services that are not built into the core language. Jyro comes with a comprehensive [**standard library**](stdlib) of functions that provide data manipulation capabilities.
 
 ```
 FunctionCall     = Identifier "(" [ Expression { "," Expression } ] ")" ;
