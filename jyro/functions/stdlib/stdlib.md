@@ -80,6 +80,7 @@ Miscellaneous functions for inspecting and testing data types, value generation,
 - [**Base64Decode**](stdlib/utility/base64decode) - Decode Base64-encoded string back to original format
 - [**Base64Encode**](stdlib/utility/base64encode) - Encode a string to Base64 format
 - [**CallScript**](stdlib/utility/callscript/) - Execute Jyro script with isolated data context
+- [**CallScript**](stdlib/utility/callscriptbyname/) - Execute named Jyro script via the host's script resolver with isolated data context
 - [**Equal**](stdlib/utility/equal/) - Test equality between two values
 - [**Exists**](stdlib/utility/exists/) - Test if value is not null
 - [**InvokeRestMethod**](stdlib/utility/invokerestmethod/) - Execute HTTP REST API requests (experimental)
