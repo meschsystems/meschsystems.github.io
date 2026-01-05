@@ -27,6 +27,7 @@ statement
     | whileStmt
     | forEachStmt
     | returnStmt
+    | failStmt
     | breakStmt
     | continueStmt
     | incDecStmt
@@ -77,7 +78,11 @@ forEachStmt
     ;
 
 returnStmt
-    : RETURN
+    : RETURN expression?
+    ;
+
+failStmt
+    : FAIL expression?
     ;
 
 breakStmt
@@ -124,7 +129,7 @@ equalityExpr
     ;
 
 relationalExpr
-    : additiveExpr ((LT | LE | GT | GE | IS) additiveExpr)*
+    : additiveExpr ((LT | LE | GT | GE | ISNOT | IS) additiveExpr)*
     ;
 
 additiveExpr
@@ -150,18 +155,57 @@ postfixSuffix
     ;
 
 memberOrIndex
-    : DOT Identifier
+    : DOT propertyName
     | LBRACK expression RBRACK
+    ;
+
+// Property names can be identifiers or keywords
+propertyName
+    : Identifier
+    | typeKeyword
+    | TRUE
+    | FALSE
+    | NULL
+    | VAR
+    | IF
+    | THEN
+    | ELSE
+    | END
+    | SWITCH
+    | DO
+    | CASE
+    | DEFAULT
+    | WHILE
+    | FOREACH
+    | IN
+    | RETURN
+    | FAIL
+    | BREAK
+    | CONTINUE
+    | AND
+    | OR
+    | NOT
+    | IS
+    | DATA
     ;
 
 // ---- Primaries & literals ----
 primaryExpr
     : literal
     | Identifier
-    | DATA (memberOrIndex)+
+    | typeKeyword
+    | DATA (memberOrIndex)*
     | LPAREN expression RPAREN
     | objectLiteral
     | arrayLiteral
+    ;
+
+typeKeyword
+    : NUMBER_T
+    | STRING_T
+    | BOOLEAN_T
+    | OBJECT_T
+    | ARRAY_T
     ;
 
 literal
@@ -214,6 +258,7 @@ WHILE      : 'while';
 FOREACH    : 'foreach';
 IN         : 'in';
 RETURN     : 'return';
+FAIL       : 'fail';
 BREAK      : 'break';
 CONTINUE   : 'continue';
 
@@ -224,6 +269,7 @@ NULL       : 'null';
 AND        : 'and';
 OR         : 'or';
 NOT        : 'not';
+ISNOT      : 'is not';
 IS         : 'is';
 
 // Types
