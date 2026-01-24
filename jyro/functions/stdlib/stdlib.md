@@ -16,8 +16,12 @@ The Jyro standard library provides a comprehensive set of functions organized in
 Functions for numeric calculations and mathematical operations.
 
 - [**Abs**](stdlib/math/abs/) - Calculate absolute value of a number
+- [**Average**](stdlib/math/average/) - Calculate the arithmetic mean of all numeric arguments
+- [**Clamp**](stdlib/math/clamp/) - Constrain a numeric value to be within a specified range
 - [**Max**](stdlib/math/max/) - Find maximum value from multiple arguments
+- [**Median**](stdlib/math/median/) - Find the median (middle value) of all numeric arguments
 - [**Min**](stdlib/math/min/) - Find minimum value from multiple arguments
+- [**Mode**](stdlib/math/mode/) - Find the mode (most frequently occurring value) of all numeric arguments
 - [**RandomInt**](stdlib/math/randomint/) - Generate cryptographically secure random integer within range
 - [**Round**](stdlib/math/round/) - Round number to specified decimal places
 - [**Sum**](stdlib/math/sum/) - Calculate sum of multiple numeric arguments
@@ -30,10 +34,14 @@ Functions for processing and transforming text data.
 - [**EndsWith**](stdlib/string/endswith/) - Test if string ends with specified suffix
 - [**Join**](stdlib/string/join/) - Join array elements into single string with delimiter
 - [**Lower**](stdlib/string/lower/) - Convert string to lowercase
+- [**PadLeft**](stdlib/string/padleft/) - Pad a string on the left side to a specified total length
+- [**PadRight**](stdlib/string/padright/) - Pad a string on the right side to a specified total length
+- [**PositionOf**](stdlib/string/positionof/) - Find the zero-based index position of a substring within a string
 - [**RandomString**](stdlib/string/randomstring/) - Generate cryptographically secure random string from character set
 - [**Replace**](stdlib/string/replace/) - Replace all occurrences of substring with replacement
 - [**Split**](stdlib/string/split/) - Split string into array using delimiter
 - [**StartsWith**](stdlib/string/startswith/) - Test if string begins with specified prefix
+- [**Substring**](stdlib/string/substring/) - Extract a portion of a string starting at a specified position
 - [**Trim**](stdlib/string/trim/) - Remove leading and trailing whitespace
 - [**Upper**](stdlib/string/upper/) - Convert string to uppercase
 - [**ToNumber**](stdlib/string/tonumber/) - Convert a string to a number
@@ -45,6 +53,7 @@ Functions for manipulating and processing array data structures.
 - [**Append**](stdlib/array/append/) - Add value to end of array
 - [**Clear**](stdlib/array/clear/) - Remove all elements from array
 - [**CountIf**](stdlib/array/countif/) - Count elements where field matches value using comparison operator
+- [**Distinct**](stdlib/array/distinct/) - Remove duplicate values from an array, returning only unique elements
 - [**Filter**](stdlib/array/filter/) - Return new array with elements matching field comparison criteria
 - [**First**](stdlib/array/first/) - Return first element of array without modifying it
 - [**GroupBy**](stdlib/array/groupby/) - Group array of objects by field value into keyed object
@@ -88,6 +97,7 @@ Miscellaneous functions for inspecting and testing data types, value generation,
 - [**Keys**](stdlib/utility/keys/) - Get array of property names from an object
 - [**Length**](stdlib/utility/length/) - Get length/count of strings, arrays, or objects
 - [**NewGuid**](stdlib/utility/newguid) - Generate a new globally unique identifier (GUID)
+- [**Values**](stdlib/utility/values/) - Get array of property values from an object
 - [**NotEqual**](stdlib/utility/notequal/) - Test inequality between two values
 - [**TypeOf**](stdlib/utility/typeof/) - Get type name of value as string
 
