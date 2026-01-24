@@ -18,7 +18,7 @@ The following keywords are reserved by the language and cannot be used as identi
 
 **Type Names:** `number`, `string`, `boolean`, `object`, `array`
 
-**Control Flow:** `if`, `then`, `else`, `end`, `switch`, `case`, `default`, `return`
+**Control Flow:** `if`, `then`, `elseif`, `else`, `end`, `switch`, `case`, `default`, `return`, `fail`
 
 **Iteration:** `foreach`, `in`, `do`, `while`, `break`, `continue`
 

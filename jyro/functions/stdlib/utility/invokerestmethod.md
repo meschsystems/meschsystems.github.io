@@ -14,7 +14,7 @@ Executes HTTP REST API calls to interact with web services and APIs.
 ## Syntax
 
 ```jyro
-InvokeRestMethod(url, method, headers, body)
+InvokeRestMethod(url, method, headers, body, delayMs)
 ```
 
 ## Parameters
@@ -23,6 +23,7 @@ InvokeRestMethod(url, method, headers, body)
 - **method** (string, optional): HTTP method - defaults to "GET"
 - **headers** (object, optional): Request headers as key-value pairs
 - **body** (any, optional): Request body - automatically JSON-serialized
+- **delayMs** (number, optional): Minimum milliseconds between requests for rate limiting. Uses smart interval tracking - only delays the remaining time since the last request completed.
 
 ## Returns
 
@@ -93,9 +94,9 @@ var response = InvokeRestMethod("https://api.example.com/data", "GET")
 
 if response.statusCode == 200 then
     Data.result = response.content
-else if response.statusCode == 404 then
+elseif response.statusCode == 404 then
     Data.error = "Resource not found"
-else if response.statusCode == 401 then
+elseif response.statusCode == 401 then
     Data.error = "Unauthorized - check credentials"
 else
     Data.error = "Request failed: " + response.statusDescription
@@ -141,6 +142,29 @@ if response.contentType == "application/json" then
 end
 ```
 
+### Rate Limiting API Calls
+
+```jyro
+# Process items with 500ms minimum between API calls
+foreach item in Data.items do
+    var response = InvokeRestMethod(
+        "https://api.example.com/process",
+        "POST",
+        { "Authorization": "Bearer " + Data.token },
+        item,
+        500  # 500ms minimum between requests
+    )
+
+    if response.isSuccessStatusCode then
+        item.result = response.content
+    else
+        item.error = response.statusDescription
+    end
+end
+```
+
+The delay uses smart interval tracking: if a request takes 300ms and `delayMs` is 500, the function only waits an additional 200ms before the next request. This ensures efficient rate limiting without unnecessary delays.
+
 ## Security Configuration
 
 REST API functionality includes comprehensive security controls that should be configured based on your use case:
@@ -161,6 +185,7 @@ var result = JyroBuilder.Create()
 - Max response size: 10 MB
 - Concurrent requests: 5
 - Request timeout: 30 seconds
+- Max request delay: 10,000 ms (10 seconds)
 - Allowed methods: GET, POST, PUT, PATCH, DELETE
 - URL filtering: None (all URLs allowed)
 
@@ -184,6 +209,9 @@ var restOptions = new RestApiOptions
     // Limit sizes
     MaxRequestBodySize = 512_000,    // 500 KB
     MaxResponseSize = 5_242_880,     // 5 MB
+
+    // Maximum delay scripts can request (prevents abuse)
+    MaxRequestDelayMs = 5000,        // 5 seconds max
 
     // Restrict methods
     AllowedHttpMethods = new HashSet<string> { "GET", "POST" },
@@ -376,6 +404,7 @@ The following conditions will throw `JyroRuntimeException`:
 - **Security policy violation**: URLs blocked by allow/deny lists
 - **Method not allowed**: HTTP methods blocked by security policy
 - **Size limit exceeded**: Request or response exceeds configured limits
+- **Delay limit exceeded**: Requested delay exceeds MaxRequestDelayMs
 - **Timeout**: Request exceeds timeout duration
 - **Concurrent limit**: Maximum concurrent requests exceeded
 - **Network errors**: Connection failures, DNS resolution errors
@@ -390,7 +419,7 @@ var response = InvokeRestMethod("https://api.example.com/data", "GET")
 # HTTP errors don't throw - check status
 if response.statusCode >= 400 and response.statusCode < 500 then
     Data.error = "Client error: " + response.statusDescription
-else if response.statusCode >= 500 then
+elseif response.statusCode >= 500 then
     Data.error = "Server error: " + response.statusDescription
 end
 ```
