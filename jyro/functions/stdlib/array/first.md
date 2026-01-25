@@ -27,7 +27,7 @@ First(array)
 
 ## Description
 
-Provides safe, non-destructive access to the first element of an array. Unlike direct index access (`array[0]`), this function returns null for empty arrays instead of throwing an error, making it ideal for defensive programming patterns.
+Provides safe, non-destructive access to the first element of an array. Unlike direct index access (`array[0]`), this function Returns `null` for empty arrays instead of throwing an error, making it ideal for defensive programming patterns.
 
 The array is never modified by this operation.
 
@@ -84,7 +84,7 @@ var firstActive = First(Filter(users, "status", "==", "active"))
 ## Notes
 
 - The array is never modified
-- Returns null for empty arrays (does not throw an error)
+- Returns `null` for empty arrays (does not throw an error)
 - Safer than direct index access for potentially empty arrays
 - Can be elegantly composed with Sort, Filter, and other array functions
 - Use with Pop to safely check before removing elements

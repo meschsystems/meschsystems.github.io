@@ -32,17 +32,17 @@ Provides a convenient way to check for the presence of meaningful data before pe
 ## Examples
 
 ```jyro
-var result1 = Exists("hello")      # Returns true
+var result1 = Exists("hello")      # Returns `true`
 ```
 
 ```jyro
-var result2 = Exists(42)           # Returns true
+var result2 = Exists(42)           # Returns `true`
 ```
 
 ```jyro
-var result3 = Exists(null)         # Returns false
+var result3 = Exists(null)         # Returns `false`
 ```
 
 ```jyro
-var result4 = Exists(array [])     # Returns true (empty array exists)
+var result4 = Exists(array [])     # Returns `true` (empty array exists)
 ```

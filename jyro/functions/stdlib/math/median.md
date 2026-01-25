@@ -31,7 +31,7 @@ Median(array)
 
 Calculates the median by sorting all numeric values and returning the middle value. For an odd count of numbers, returns the middle value. For an even count, returns the average of the two middle values.
 
-Non-numeric arguments are ignored. Returns null if no numeric arguments are provided.
+Non-numeric arguments are ignored. Returns `null` if no numeric arguments are provided.
 
 ## Examples
 
@@ -73,7 +73,7 @@ var med = Median(salaries)
 
 ## Notes
 
-- Returns null if no numeric arguments are provided
+- Returns `null` if no numeric arguments are provided
 - Non-numeric arguments are silently ignored
 - Accepts a single array argument for convenience
 - Median is less sensitive to outliers than average

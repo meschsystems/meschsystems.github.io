@@ -33,17 +33,17 @@ Performs deep comparison for complex types including objects and arrays, and han
 ## Examples
 
 ```jyro
-var result1 = Equal(5, 5)                    # Returns true
+var result1 = Equal(5, 5)                    # Returns `true`
 ```
 
 ```jyro
-var result2 = Equal("hello", "hello")        # Returns true
+var result2 = Equal("hello", "hello")        # Returns `true`
 ```
 
 ```jyro
-var result3 = Equal(5, "5")                  # Returns false (different types)
+var result3 = Equal(5, "5")                  # Returns `false` (different types)
 ```
 
 ```jyro
-var result4 = Equal(null, null)              # Returns true
+var result4 = Equal(null, null)              # Returns `true`
 ```

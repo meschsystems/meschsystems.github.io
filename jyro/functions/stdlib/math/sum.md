@@ -29,7 +29,7 @@ Sum(array)
 
 ## Description
 
-Accepts a variable number of numeric values or a single array and computes their total, ignoring non-numeric arguments. Returns null if no numeric arguments are provided.
+Accepts a variable number of numeric values or a single array and computes their total, ignoring non-numeric arguments. Returns `null` if no numeric arguments are provided.
 
 ## Examples
 
@@ -46,7 +46,7 @@ var result3 = Sum(-5, 10, -3)           # Returns 2
 ```
 
 ```jyro
-var result4 = Sum()                     # Returns null
+var result4 = Sum()                     # Returns `null`
 ```
 
 ```jyro

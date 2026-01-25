@@ -27,7 +27,7 @@ Last(array)
 
 ## Description
 
-Provides safe, non-destructive access to the last element of an array. Unlike direct index access (`array[Length(array) - 1]`), this function returns null for empty arrays instead of throwing an error, making it ideal for defensive programming patterns.
+Provides safe, non-destructive access to the last element of an array. Unlike direct index access (`array[Length(array) - 1]`), this function Returns `null` for empty arrays instead of throwing an error, making it ideal for defensive programming patterns.
 
 The array is never modified by this operation.
 
@@ -94,7 +94,7 @@ end
 ## Notes
 
 - The array is never modified
-- Returns null for empty arrays (does not throw an error)
+- Returns `null` for empty arrays (does not throw an error)
 - Safer than direct index access for potentially empty arrays
 - More readable than `array[Length(array) - 1]`
 - Can be elegantly composed with Sort, Filter, and other array functions

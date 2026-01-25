@@ -32,17 +32,17 @@ Provides the logical inverse of the Exists function and is useful for conditiona
 ## Examples
 
 ```jyro
-var result1 = IsNull(null)         # Returns true
+var result1 = IsNull(null)         # Returns `true`
 ```
 
 ```jyro
-var result2 = IsNull("hello")      # Returns false
+var result2 = IsNull("hello")      # Returns `false`
 ```
 
 ```jyro
-var result3 = IsNull(0)            # Returns false
+var result3 = IsNull(0)            # Returns `false`
 ```
 
 ```jyro
-var result4 = IsNull(array [])     # Returns false
+var result4 = IsNull(array [])     # Returns `false`
 ```

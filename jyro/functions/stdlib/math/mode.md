@@ -31,7 +31,7 @@ Mode(array)
 
 Identifies the value that appears most frequently among all numeric arguments. If multiple values have the same highest frequency (a tie), returns the first one encountered in the argument list.
 
-Non-numeric arguments are ignored. Returns null if no numeric arguments are provided.
+Non-numeric arguments are ignored. Returns `null` if no numeric arguments are provided.
 
 ## Examples
 
@@ -85,7 +85,7 @@ var mod = Mode(data[0], data[1], data[2], data[3], data[4], data[5], data[6])
 
 ## Notes
 
-- Returns null if no numeric arguments are provided
+- Returns `null` if no numeric arguments are provided
 - Non-numeric arguments are silently ignored
 - Accepts a single array argument for convenience
 - For continuous data, mode may be less meaningful than average or median

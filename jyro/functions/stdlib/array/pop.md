@@ -31,7 +31,7 @@ Implements the classic stack pop operation: removes the last element from an arr
 
 This function is specifically designed for cases where you need the value of the removed element. If you only need to remove the last element without using its value, use RemoveLast instead, which returns the array to enable chaining.
 
-Returns null if the array is empty, making it safe to call on any array.
+Returns `null` if the array is empty, making it safe to call on any array.
 
 ## Examples
 
@@ -104,7 +104,7 @@ var length = Length(RemoveLast(numbers))
 
 - The array is modified in-place
 - Returns the removed element (not the array)
-- Returns null for empty arrays (does not throw an error)
+- Returns `null` for empty arrays (does not throw an error)
 - Use RemoveLast if you want to chain operations and don't need the element value
 - Implements standard stack (LIFO - Last In, First Out) semantics
 - Safe to call on empty arrays

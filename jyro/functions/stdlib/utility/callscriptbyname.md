@@ -77,7 +77,7 @@ var processed = CallScriptByName("transform-data", Data)
 ## Errors
 
 - Throws a runtime error if the script resolver is not configured
-- Throws a runtime error if the script name cannot be resolved (resolver returns null)
+- Throws a runtime error if the script name cannot be resolved (resolver Returns `null`)
 - Throws a runtime error if a script execution cycle is detected
 
 ## See Also

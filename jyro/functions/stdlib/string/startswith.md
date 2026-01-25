@@ -33,17 +33,17 @@ Performs case-sensitive comparison using ordinal string comparison semantics for
 ## Examples
 
 ```jyro
-var result1 = StartsWith("Hello World", "Hello")    # Returns true
+var result1 = StartsWith("Hello World", "Hello")    # Returns `true`
 ```
 
 ```jyro
-var result2 = StartsWith("filename.txt", "file")    # Returns true
+var result2 = StartsWith("filename.txt", "file")    # Returns `true`
 ```
 
 ```jyro
-var result3 = StartsWith("Hello", "hello")          # Returns false (case-sensitive)
+var result3 = StartsWith("Hello", "hello")          # Returns `false` (case-sensitive)
 ```
 
 ```jyro
-var result4 = StartsWith("test", "testing")         # Returns false
+var result4 = StartsWith("test", "testing")         # Returns `false`
 ```

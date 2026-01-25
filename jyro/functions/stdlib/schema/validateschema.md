@@ -38,17 +38,17 @@ This function is useful for validating API responses, user input, or any structu
 
 ```jyro
 var schema = { "type": "string" }
-var isValid = ValidateSchema("hello", schema)    # Returns true
+var isValid = ValidateSchema("hello", schema)    # Returns `true`
 ```
 
 ```jyro
 var schema = { "type": "number" }
-var isValid = ValidateSchema(42, schema)         # Returns true
+var isValid = ValidateSchema(42, schema)         # Returns `true`
 ```
 
 ```jyro
 var schema = { "type": "number" }
-var isValid = ValidateSchema("not a number", schema)  # Returns false
+var isValid = ValidateSchema("not a number", schema)  # Returns `false`
 ```
 
 ### Object Validation with Required Properties
@@ -64,7 +64,7 @@ var schema = {
 }
 
 var validData = { "name": "Alice", "age": 30 }
-var isValid = ValidateSchema(validData, schema)  # Returns true
+var isValid = ValidateSchema(validData, schema)  # Returns `true`
 ```
 
 ```jyro
@@ -74,7 +74,7 @@ var schema = {
 }
 
 var missingRequired = { "age": 30 }
-var isValid = ValidateSchema(missingRequired, schema)  # Returns false
+var isValid = ValidateSchema(missingRequired, schema)  # Returns `false`
 ```
 
 ### Numeric Constraints
@@ -86,9 +86,9 @@ var schema = {
     "maximum": 100
 }
 
-var isValid1 = ValidateSchema(50, schema)   # Returns true
-var isValid2 = ValidateSchema(150, schema)  # Returns false
-var isValid3 = ValidateSchema(-5, schema)   # Returns false
+var isValid1 = ValidateSchema(50, schema)   # Returns `true`
+var isValid2 = ValidateSchema(150, schema)  # Returns `false`
+var isValid3 = ValidateSchema(-5, schema)   # Returns `false`
 ```
 
 ### Array Validation
@@ -100,7 +100,7 @@ var schema = {
 }
 
 var numbers = [1, 2, 3, 4, 5]
-var isValid = ValidateSchema(numbers, schema)  # Returns true
+var isValid = ValidateSchema(numbers, schema)  # Returns `true`
 ```
 
 ```jyro
@@ -110,7 +110,7 @@ var schema = {
 }
 
 var mixed = [1, "two", 3]
-var isValid = ValidateSchema(mixed, schema)  # Returns false
+var isValid = ValidateSchema(mixed, schema)  # Returns `false`
 ```
 
 ### Enum Validation
@@ -121,8 +121,8 @@ var schema = {
     "enum": ["draft", "published", "archived"]
 }
 
-var isValid1 = ValidateSchema("published", schema)  # Returns true
-var isValid2 = ValidateSchema("deleted", schema)    # Returns false
+var isValid1 = ValidateSchema("published", schema)  # Returns `true`
+var isValid2 = ValidateSchema("deleted", schema)    # Returns `false`
 ```
 
 ### Nested Object Validation
@@ -148,7 +148,7 @@ var data = {
         "role": "admin"
     }
 }
-var isValid = ValidateSchema(data, schema)  # Returns true
+var isValid = ValidateSchema(data, schema)  # Returns `true`
 ```
 
 ### Conditional Validation Pattern

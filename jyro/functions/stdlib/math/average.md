@@ -29,7 +29,7 @@ Average(array)
 
 ## Description
 
-Calculates the arithmetic mean (average) by summing all numeric arguments and dividing by the count. Non-numeric arguments are ignored. Returns null if no numeric arguments are provided.
+Calculates the arithmetic mean (average) by summing all numeric arguments and dividing by the count. Non-numeric arguments are ignored. Returns `null` if no numeric arguments are provided.
 
 ## Examples
 
@@ -73,7 +73,7 @@ var funcAvg = Average(numbers[0], numbers[1], numbers[2], numbers[3], numbers[4]
 
 ## Notes
 
-- Returns null if no numeric arguments are provided
+- Returns `null` if no numeric arguments are provided
 - Non-numeric arguments are silently ignored
 - Accepts a single array argument for convenience
 - For calculating median (middle value), use `Median`

@@ -9,7 +9,7 @@ permalink: /jyro/expressions/relational/
 
 # Relational (<, <=, >, >=, is)
 
-Relational operators perform magnitude comparisons for numeric values and the `is` operator performs runtime type checking. Type checking returns true if the operand matches the specified type.
+Relational operators perform magnitude comparisons for numeric values and the `is` operator performs runtime type checking. Type checking Returns `true` if the operand matches the specified type.
 
 ```
 Relational       = Additive { ("<" | "<=" | ">" | ">=" | "is") Additive } ;

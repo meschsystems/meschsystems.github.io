@@ -28,27 +28,27 @@ Contains(source, searchValue)
 
 ## Description
 
-For strings, performs case-sensitive substring searching. For arrays, searches for exact value matches using Jyro equality semantics. Returns false if either argument is null.
+For strings, performs case-sensitive substring searching. For arrays, searches for exact value matches using Jyro equality semantics. Returns `false` if either argument is null.
 
 ## Examples
 
 ### String searching
 
 ```jyro
-var hasSubstring = Contains("Hello World", "World")  # Returns true
+var hasSubstring = Contains("Hello World", "World")  # Returns `true`
 ```
 
 ```jyro
-var notFound = Contains("Hello", "Goodbye")          # Returns false
+var notFound = Contains("Hello", "Goodbye")          # Returns `false`
 ```
 
 ### Array searching
 
 ```jyro
 var fruits = array ["apple", "banana", "orange"]
-var hasApple = Contains(fruits, "apple")             # Returns true
+var hasApple = Contains(fruits, "apple")             # Returns `true`
 ```
 
 ```jyro
-var hasGrape = Contains(fruits, "grape")             # Returns false
+var hasGrape = Contains(fruits, "grape")             # Returns `false`
 ```

@@ -33,17 +33,17 @@ Returns the logical negation of the equality comparison, performing deep compari
 ## Examples
 
 ```jyro
-var result1 = NotEqual(5, 3)              # Returns true
+var result1 = NotEqual(5, 3)              # Returns `true`
 ```
 
 ```jyro
-var result2 = NotEqual("hello", "world")  # Returns true
+var result2 = NotEqual("hello", "world")  # Returns `true`
 ```
 
 ```jyro
-var result3 = NotEqual(5, 5)              # Returns false
+var result3 = NotEqual(5, 5)              # Returns `false`
 ```
 
 ```jyro
-var result4 = NotEqual("test", "test")    # Returns false
+var result4 = NotEqual("test", "test")    # Returns `false`
 ```

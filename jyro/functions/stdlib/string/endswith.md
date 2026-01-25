@@ -33,17 +33,17 @@ Performs case-sensitive string suffix comparison using ordinal string comparison
 ## Examples
 
 ```jyro
-var result1 = EndsWith("Hello World", "World")    # Returns true
+var result1 = EndsWith("Hello World", "World")    # Returns `true`
 ```
 
 ```jyro
-var result2 = EndsWith("filename.txt", ".txt")    # Returns true
+var result2 = EndsWith("filename.txt", ".txt")    # Returns `true`
 ```
 
 ```jyro
-var result3 = EndsWith("Hello", "world")          # Returns false (case-sensitive)
+var result3 = EndsWith("Hello", "world")          # Returns `false` (case-sensitive)
 ```
 
 ```jyro
-var result4 = EndsWith("test", "testing")         # Returns false
+var result4 = EndsWith("test", "testing")         # Returns `false`
 ```
