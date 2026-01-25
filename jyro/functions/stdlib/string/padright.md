@@ -82,4 +82,6 @@ var result = PadRight("Hello World", 5, "x")  # Returns "Hello World" (unchanged
 - Only the first character of the padding string is used
 - If padding character is empty string, defaults to space
 - Commonly used for left-aligning text in fixed-width columns
-- See also `PadLeft` for padding on the left side
+## See Also
+
+- [PadLeft](../padleft/) - Pad a string on the left side to a specified total length

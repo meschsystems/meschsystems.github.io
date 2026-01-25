@@ -112,4 +112,6 @@ var avgPrice = Average(allPrices[0], allPrices[1], allPrices[2])
 - The type of each value is preserved (numbers, strings, booleans, objects, arrays)
 - Works seamlessly with `Keys` to iterate over objects
 - Returns an empty array for empty objects or null values
-- See also: `Keys` for extracting property names
+## See Also
+
+- [Keys](../keys/) - Extract property names from an object

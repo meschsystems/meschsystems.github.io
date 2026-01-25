@@ -113,5 +113,5 @@ end
 
 ## See Also
 
-- [Contains](../string/contains/) - Test if string contains substring or array contains value
-- [Substring](../string/substring/) - Extract a portion of a string
+- [Contains](../../string/contains/) - Test if string contains substring or array contains value
+- [Substring](../../string/substring/) - Extract a portion of a string

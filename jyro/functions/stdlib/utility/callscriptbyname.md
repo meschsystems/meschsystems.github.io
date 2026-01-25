@@ -82,4 +82,4 @@ var processed = CallScriptByName("transform-data", Data)
 
 ## See Also
 
-- [CallScript](callscript) - Execute a script with inline source code
+- [CallScript](../callscript/) - Execute a script with inline source code
