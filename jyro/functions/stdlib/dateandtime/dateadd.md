@@ -14,14 +14,14 @@ Adds a specified amount of time to a date, supporting various time units.
 ## Syntax
 
 ```jyro
-DateAdd(date, unit, amount)
+DateAdd(date, amount, unit)
 ```
 
 ## Parameters
 
 - **date** (string): The base date string to modify
-- **unit** (string): The time unit for the addition
 - **amount** (number): The amount to add (must be integer)
+- **unit** (string): The time unit for the addition
 
 ## Returns
 
@@ -35,16 +35,21 @@ Adds the specified time amount to the date using the given unit. Valid units are
 
 ```jyro
 var baseDate = "2024-01-15T10:30:00.000Z"
-var nextWeek = DateAdd(baseDate, "days", 7)
+var nextWeek = DateAdd(baseDate, 7, "days")
 # Returns "2024-01-22T10:30:00.000Z"
 ```
 
 ```jyro
-var futureDate = DateAdd("2024-06-01", "months", 3)
+var futureDate = DateAdd("2024-06-01", 3, "months")
 # Returns "2024-09-01T00:00:00.000Z"
 ```
 
 ```jyro
-var laterTime = DateAdd("2024-01-01T12:00:00.000Z", "hours", 2)
+var laterTime = DateAdd("2024-01-01T12:00:00.000Z", 2, "hours")
 # Returns "2024-01-01T14:00:00.000Z"
 ```
+
+## See Also
+
+- [DateDiff](../datediff/) - Calculate difference between two dates
+- [DatePart](../datepart/) - Extract specific component from date

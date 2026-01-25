@@ -15,19 +15,21 @@ Calculates the sum of all numeric arguments provided to the function.
 
 ```jyro
 Sum(value1, value2, ...)
+Sum(array)
 ```
 
 ## Parameters
 
-- **value1, value2, ...** (number): Multiple numeric values to sum
+- **value1, value2, ...** (number): Multiple numeric values to sum, OR
+- **array** (array): A single array of numeric values
 
 ## Returns
 
-- **number**: The total sum of all numeric arguments
+- **number**: The total sum of all numeric arguments, or `null` if no numeric arguments are provided
 
 ## Description
 
-Accepts a variable number of numeric values and computes their total, ignoring non-numeric arguments. Returns zero if no numeric arguments are provided.
+Accepts a variable number of numeric values or a single array and computes their total, ignoring non-numeric arguments. Returns null if no numeric arguments are provided.
 
 ## Examples
 
@@ -44,5 +46,11 @@ var result3 = Sum(-5, 10, -3)           # Returns 2
 ```
 
 ```jyro
-var result4 = Sum()                     # Returns 0
+var result4 = Sum()                     # Returns null
+```
+
+```jyro
+# Using with array
+var numbers = [1, 2, 3, 4, 5]
+var result5 = Sum(numbers)              # Returns 15
 ```

@@ -36,7 +36,6 @@ Functions for processing and transforming text data.
 - [**Lower**](stdlib/string/lower/) - Convert string to lowercase
 - [**PadLeft**](stdlib/string/padleft/) - Pad a string on the left side to a specified total length
 - [**PadRight**](stdlib/string/padright/) - Pad a string on the right side to a specified total length
-- [**PositionOf**](stdlib/string/positionof/) - Find the zero-based index position of a substring within a string
 - [**RandomString**](stdlib/string/randomstring/) - Generate cryptographically secure random string from character set
 - [**Replace**](stdlib/string/replace/) - Replace all occurrences of substring with replacement
 - [**Split**](stdlib/string/split/) - Split string into array using delimiter
@@ -57,7 +56,7 @@ Functions for manipulating and processing array data structures.
 - [**Filter**](stdlib/array/filter/) - Return new array with elements matching field comparison criteria
 - [**First**](stdlib/array/first/) - Return first element of array without modifying it
 - [**GroupBy**](stdlib/array/groupby/) - Group array of objects by field value into keyed object
-- [**IndexOf**](stdlib/array/indexof/) - Find index of element in array using deep equality
+- [**IndexOf**](stdlib/array/indexof/) - Find index of substring in string or element in array
 - [**Insert**](stdlib/array/insert/) - Insert value at specific array index
 - [**Last**](stdlib/array/last/) - Return last element of array without modifying it
 - [**MergeArrays**](stdlib/array/mergearrays/) - Combine multiple arrays into single array
@@ -69,6 +68,7 @@ Functions for manipulating and processing array data structures.
 - [**Sort**](stdlib/array/sort/) - Return new sorted array using type-aware comparison
 - [**SortByField**](stdlib/array/sortbyfield/) - Sort array of objects by specified field
 - [**Take**](stdlib/array/take/) - Return new array containing first n elements without modifying original
+- [**Length**](stdlib/array/length/) - Get length/count of strings, arrays, or objects
 
 ## Date and Time Functions
 
@@ -95,7 +95,6 @@ Miscellaneous functions for inspecting and testing data types, value generation,
 - [**InvokeRestMethod**](stdlib/utility/invokerestmethod/) - Execute HTTP REST API requests (experimental)
 - [**IsNull**](stdlib/utility/isnull/) - Test if value is null
 - [**Keys**](stdlib/utility/keys/) - Get array of property names from an object
-- [**Length**](stdlib/utility/length/) - Get length/count of strings, arrays, or objects
 - [**NewGuid**](stdlib/utility/newguid) - Generate a new globally unique identifier (GUID)
 - [**Values**](stdlib/utility/values/) - Get array of property values from an object
 - [**NotEqual**](stdlib/utility/notequal/) - Test inequality between two values

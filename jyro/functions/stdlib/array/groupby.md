@@ -132,8 +132,8 @@ var todos = [
 var byDone = GroupBy(todos, "done")
 # byDone is:
 # {
-#   "True": [{ "task": "Write docs", ... }, { "task": "Review PR", ... }],
-#   "False": [{ "task": "Fix bug", ... }]
+#   "true": [{ "task": "Write docs", ... }, { "task": "Review PR", ... }],
+#   "false": [{ "task": "Fix bug", ... }]
 # }
 ```
 
@@ -182,7 +182,7 @@ end
 - Items with null or missing field values are grouped under the key `"null"`
 - All field values are converted to strings to serve as object keys:
   - Numbers: `1` becomes `"1"`
-  - Booleans: `true` becomes `"True"`, `false` becomes `"False"`
+  - Booleans: `true` becomes `"true"`, `false` becomes `"false"` (lowercase, JSON-aligned)
   - Strings: used as-is
 - Nested paths traverse objects using dot notation (e.g., "user.profile.role")
 - Empty arrays return an empty object

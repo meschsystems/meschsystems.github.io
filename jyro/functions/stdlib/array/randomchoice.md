@@ -19,11 +19,11 @@ RandomChoice(array)
 
 ## Parameters
 
-- **array** (array): The array to select a random element from. Must not be empty.
+- **array** (array): The array to select a random element from
 
 ## Returns
 
-- **any**: A randomly selected element from the array
+- **any**: A randomly selected element from the array, or `null` if the array is empty
 
 ## Description
 
@@ -31,7 +31,7 @@ Returns a random element from the provided array using cryptographically secure 
 
 Uses `System.Security.Cryptography.RandomNumberGenerator` for cryptographic security rather than pseudo-random generation, ensuring unpredictable selection suitable for security contexts.
 
-Throws an error if the array is empty, as there are no elements to select from.
+Returns null if the array is empty, consistent with other accessor functions like First, Last, and Pop.
 
 ## Examples
 
@@ -121,7 +121,7 @@ var choice = RandomChoice(single)
 
 - Uses cryptographically secure random selection (not pseudo-random)
 - Each element has equal probability of being selected
-- Throws an error if the array is empty (cannot select from nothing)
+- Returns null if the array is empty (consistent with First, Last, Pop)
 - Works with arrays containing any type of elements (numbers, strings, objects, nested arrays)
 - Does not modify the original array
 - For random integer generation, see [RandomInt](../math/randomint/)

@@ -15,19 +15,21 @@ Returns the maximum numeric value from a variable number of arguments.
 
 ```jyro
 Max(value1, value2, ...)
+Max(array)
 ```
 
 ## Parameters
 
-- **value1, value2, ...** (number): Multiple numeric values to compare
+- **value1, value2, ...** (number): Multiple numeric values to compare, OR
+- **array** (array): A single array of numeric values
 
 ## Returns
 
-- **number**: The maximum value found, or null if no numeric arguments provided
+- **number**: The maximum value found, or `null` if no numeric arguments provided
 
 ## Description
 
-Accepts multiple numeric values and determines the largest value among them. Non-numeric arguments are ignored during the comparison process.
+Accepts multiple numeric values or a single array and determines the largest value among them. Non-numeric arguments are ignored during the comparison process.
 
 ## Examples
 
@@ -45,4 +47,10 @@ var result3 = Max(3.14, 2.71, 1.41)    # Returns 3.14
 
 ```jyro
 var result4 = Max(42)                  # Returns 42
+```
+
+```jyro
+# Using with array
+var numbers = [5, 10, 3, 8]
+var result5 = Max(numbers)             # Returns 10
 ```

@@ -15,19 +15,21 @@ Calculates the arithmetic mean of all numeric arguments.
 
 ```jyro
 Average(value1, value2, ...)
+Average(array)
 ```
 
 ## Parameters
 
-- **values** (number...): One or more numeric values to average
+- **values** (number...): One or more numeric values to average, OR
+- **array** (array): A single array of numeric values
 
 ## Returns
 
-- **number**: The arithmetic mean of all provided numeric values
+- **number**: The arithmetic mean of all provided numeric values, or `null` if no numeric arguments are provided
 
 ## Description
 
-Calculates the arithmetic mean (average) by summing all numeric arguments and dividing by the count. Non-numeric arguments are ignored. Returns zero if no numeric arguments are provided.
+Calculates the arithmetic mean (average) by summing all numeric arguments and dividing by the count. Non-numeric arguments are ignored. Returns null if no numeric arguments are provided.
 
 ## Examples
 
@@ -53,7 +55,7 @@ var avg = Average(42)  # Returns 42
 
 ```jyro
 var grades = [85, 92, 78, 95, 88]
-var avg = Average(grades[0], grades[1], grades[2], grades[3], grades[4])
+var avg = Average(grades)
 # Returns 87.6
 ```
 
@@ -71,8 +73,9 @@ var funcAvg = Average(numbers[0], numbers[1], numbers[2], numbers[3], numbers[4]
 
 ## Notes
 
-- Returns 0 if no numeric arguments are provided
+- Returns null if no numeric arguments are provided
 - Non-numeric arguments are silently ignored
+- Accepts a single array argument for convenience
 - For calculating median (middle value), use `Median`
 - For calculating mode (most frequent), use `Mode`
 - Related: `Sum`, `Min`, `Max`
