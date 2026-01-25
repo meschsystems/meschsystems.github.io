@@ -56,7 +56,7 @@ var schema = {
         "name": { "type": "string" },
         "email": { "type": "string" }
     },
-    "required": array ["name", "email"]
+    "required": ["name", "email"]
 }
 
 var data = { "name": "Alice" }
@@ -71,7 +71,7 @@ var schema = {
     "type": "object",
     "properties": {
         "age": { "type": "number", "minimum": 0 },
-        "status": { "type": "string", "enum": array ["active", "inactive"] }
+        "status": { "type": "string", "enum": ["active", "inactive"] }
     }
 }
 
@@ -91,7 +91,7 @@ var schema = {
             "properties": {
                 "email": { "type": "string" }
             },
-            "required": array ["email"]
+            "required": ["email"]
         }
     }
 }
@@ -109,7 +109,7 @@ var schema = {
     "items": { "type": "number", "minimum": 0 }
 }
 
-var data = array [1, 2, -3, 4]
+var data = [1, 2, -3, 4]
 var errors = GetSchemaErrors(data, schema)
 # Returns error with path "/2" indicating value -3 is below minimum
 ```
@@ -123,16 +123,16 @@ var schema = {
         "id": { "type": "number" },
         "name": { "type": "string" }
     },
-    "required": array ["id", "name"]
+    "required": ["id", "name"]
 }
 
 var data = { "id": 123, "name": "Test" }
 var errors = GetSchemaErrors(data, schema)
 # Returns: [] (empty array - data is valid)
 
-if (Length(errors) == 0) {
+if Length(errors) == 0 then
     Data.message = "Data is valid"
-}
+end
 ```
 
 ### User Feedback Pattern
@@ -144,18 +144,18 @@ var userSchema = {
         "username": { "type": "string", "minLength": 3 },
         "age": { "type": "number", "minimum": 18 }
     },
-    "required": array ["username", "age"]
+    "required": ["username", "age"]
 }
 
 var formData = Data.userInput
 var errors = GetSchemaErrors(formData, userSchema)
 
-if (Length(errors) > 0) {
+if Length(errors) > 0 then
     Data.validationErrors = errors
     Data.isValid = false
-} else {
+else
     Data.isValid = true
-}
+end
 ```
 
 ### Logging Validation Failures
@@ -167,24 +167,24 @@ var apiResponseSchema = {
         "success": { "type": "boolean" },
         "data": { "type": "object" }
     },
-    "required": array ["success"]
+    "required": ["success"]
 }
 
-var response = InvokeRestMethod("https://api.example.com/data", "GET")
+var response = InvokeRestMethod("https://api.example.com/data", "GET", null, null)
 var errors = GetSchemaErrors(response.content, apiResponseSchema)
 
-if (Length(errors) > 0) {
+if Length(errors) > 0 then
     # Log each validation error
-    foreach (var error in errors) {
+    foreach error in errors do
         var logEntry = {
             "timestamp": Now(),
             "path": error.path,
             "keyword": error.keyword,
             "message": error.message
         }
-        Data.errorLog = Append(Data.errorLog, logEntry)
-    }
-}
+        Append(Data.errorLog, logEntry)
+    end
+end
 ```
 
 ## Notes

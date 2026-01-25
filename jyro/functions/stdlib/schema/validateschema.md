@@ -60,7 +60,7 @@ var schema = {
         "name": { "type": "string" },
         "age": { "type": "number" }
     },
-    "required": array ["name"]
+    "required": ["name"]
 }
 
 var validData = { "name": "Alice", "age": 30 }
@@ -70,7 +70,7 @@ var isValid = ValidateSchema(validData, schema)  # Returns true
 ```jyro
 var schema = {
     "type": "object",
-    "required": array ["name"]
+    "required": ["name"]
 }
 
 var missingRequired = { "age": 30 }
@@ -99,7 +99,7 @@ var schema = {
     "items": { "type": "number" }
 }
 
-var numbers = array [1, 2, 3, 4, 5]
+var numbers = [1, 2, 3, 4, 5]
 var isValid = ValidateSchema(numbers, schema)  # Returns true
 ```
 
@@ -109,7 +109,7 @@ var schema = {
     "items": { "type": "number" }
 }
 
-var mixed = array [1, "two", 3]
+var mixed = [1, "two", 3]
 var isValid = ValidateSchema(mixed, schema)  # Returns false
 ```
 
@@ -118,7 +118,7 @@ var isValid = ValidateSchema(mixed, schema)  # Returns false
 ```jyro
 var schema = {
     "type": "string",
-    "enum": array ["draft", "published", "archived"]
+    "enum": ["draft", "published", "archived"]
 }
 
 var isValid1 = ValidateSchema("published", schema)  # Returns true
@@ -137,7 +137,7 @@ var schema = {
                 "email": { "type": "string" },
                 "role": { "type": "string" }
             },
-            "required": array ["email"]
+            "required": ["email"]
         }
     }
 }
@@ -160,17 +160,17 @@ var responseSchema = {
         "status": { "type": "number" },
         "data": { "type": "object" }
     },
-    "required": array ["status", "data"]
+    "required": ["status", "data"]
 }
 
-var apiResponse = InvokeRestMethod("https://api.example.com/users", "GET")
-if (ValidateSchema(apiResponse.content, responseSchema)) {
+var apiResponse = InvokeRestMethod("https://api.example.com/users", "GET", null, null)
+if ValidateSchema(apiResponse.content, responseSchema) then
     # Process the validated response
     Data.users = apiResponse.content.data
-} else {
+else
     # Handle invalid response
     Data.error = "Invalid API response format"
-}
+end
 ```
 
 ## Notes
