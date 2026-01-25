@@ -101,6 +101,13 @@ Miscellaneous functions for inspecting and testing data types, value generation,
 - [**NotEqual**](stdlib/utility/notequal/) - Test inequality between two values
 - [**TypeOf**](stdlib/utility/typeof/) - Get type name of value as string
 
+## Schema Validation
+
+Functions for validating data against JSON Schema definitions.
+
+- [**ValidateSchema**](stdlib/schema/validateschema/) - Validate data against a JSON Schema and return true/false
+- [**GetSchemaErrors**](stdlib/schema/getschemaerrors/) - Validate data and return detailed error information
+
 ## Usage Patterns
 
 Most functions follow consistent patterns for parameter handling and return values:
