@@ -14,17 +14,17 @@ Tests whether a string ends with a specified suffix using case-sensitive compari
 ## Syntax
 
 ```jyro
-EndsWith(source, suffix)
+EndsWith(text, suffix)
 ```
 
 ## Parameters
 
-- **source** (string): The source string to test
+- **text** (string): The string to test
 - **suffix** (string): The suffix to search for
 
 ## Returns
 
-- **boolean**: True if the source string ends with the suffix
+- **boolean**: True if the string ends with the suffix
 
 ## Description
 

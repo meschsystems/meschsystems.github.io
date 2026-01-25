@@ -9,17 +9,17 @@ permalink: /jyro/functions/stdlib/string/replace/
 
 # Replace
 
-Replaces all occurrences of a specified substring with a replacement string within a source string.
+Replaces all occurrences of a specified substring with a replacement string.
 
 ## Syntax
 
 ```jyro
-Replace(source, oldValue, newValue)
+Replace(text, oldValue, newValue)
 ```
 
 ## Parameters
 
-- **source** (string): The source string to process
+- **text** (string): The string to process
 - **oldValue** (string): The substring to search for and replace
 - **newValue** (string): The replacement string to substitute
 

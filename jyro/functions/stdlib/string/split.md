@@ -14,12 +14,12 @@ Splits a string into an array of substrings based on a specified delimiter.
 ## Syntax
 
 ```jyro
-Split(source, delimiter)
+Split(text, delimiter)
 ```
 
 ## Parameters
 
-- **source** (string): The source string to split
+- **text** (string): The string to split
 - **delimiter** (string): The delimiter string used for splitting
 
 ## Returns
@@ -28,7 +28,7 @@ Split(source, delimiter)
 
 ## Description
 
-Returns all parts including empty strings that result from consecutive delimiters or delimiters at the beginning or end of the source string.
+Returns all parts including empty strings that result from consecutive delimiters or delimiters at the beginning or end of the string.
 
 ## Examples
 

@@ -14,17 +14,17 @@ Tests whether a string begins with a specified prefix using case-sensitive compa
 ## Syntax
 
 ```jyro
-StartsWith(source, prefix)
+StartsWith(text, prefix)
 ```
 
 ## Parameters
 
-- **source** (string): The source string to test
+- **text** (string): The string to test
 - **prefix** (string): The prefix to search for
 
 ## Returns
 
-- **boolean**: True if the source string begins with the prefix
+- **boolean**: True if the string begins with the prefix
 
 ## Description
 
