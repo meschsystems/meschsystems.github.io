@@ -61,10 +61,13 @@ Functions for manipulating and processing array data structures.
 - [**Last**](stdlib/array/last/) - Return last element of array without modifying it
 - [**MergeArrays**](stdlib/array/mergearrays/) - Combine multiple arrays into single array
 - [**Pop**](stdlib/array/pop/) - Remove and return last array element
+- [**Project**](stdlib/array/project/) - Extract multiple fields from each object into new objects
 - [**RandomChoice**](stdlib/array/randomchoice/) - Select random element from array using cryptographically secure randomization
 - [**RemoveAt**](stdlib/array/removeat/) - Remove element at specific index and return modified array
 - [**RemoveLast**](stdlib/array/removelast/) - Remove last element and return modified array
 - [**Reverse**](stdlib/array/reverse/) - Return new array with elements in reversed order
+- [**Select**](stdlib/array/select/) - Extract a single field from each object in an array
+- [**SelectMany**](stdlib/array/selectmany/) - Extract array fields and flatten into a single array
 - [**Sort**](stdlib/array/sort/) - Return new sorted array using type-aware comparison
 - [**SortByField**](stdlib/array/sortbyfield/) - Sort array of objects by specified field
 - [**Take**](stdlib/array/take/) - Return new array containing first n elements without modifying original
