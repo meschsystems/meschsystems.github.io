@@ -32,6 +32,7 @@ Jyro is a case sensitive language. The case conventions are:
 
 * **keywords**: lowercase (e.g. `foreach`)
 * **local variables**: lowerCamelCase (e.g. `var myFoo = 42`)
+* **private variables**: No special programmatic meaning, but a useful convention to denote private or "system"/"metadata" variables. Use an underscore and lowerCamelCase (e.g. `var _payloadData = Data.formattedPayload`)
 * **iterator variables**: Follow the array key (e.g. `foreach item in Data.items` or `foreach Item in Data.Items`)
 * **host function calls**: PascalCase (e.g. `Today()`)
 * **script names**: PascalCase (e.g. `CallScript("ProcessVipOrders.jyro", vipOrders)`)
