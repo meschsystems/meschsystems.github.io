@@ -49,11 +49,14 @@ Functions for processing and transforming text data.
 
 Functions for manipulating and processing array data structures.
 
+- [**All**](stdlib/array/all/) - Check if all elements match a condition (short-circuits on first non-match)
+- [**Any**](stdlib/array/any/) - Check if any element matches a condition (short-circuits on first match)
 - [**Append**](stdlib/array/append/) - Add value to end of array
 - [**Clear**](stdlib/array/clear/) - Remove all elements from array
 - [**CountIf**](stdlib/array/countif/) - Count elements where field matches value using comparison operator
 - [**Distinct**](stdlib/array/distinct/) - Remove duplicate values from an array, returning only unique elements
 - [**Filter**](stdlib/array/filter/) - Return new array with elements matching field comparison criteria
+- [**Find**](stdlib/array/find/) - Find first matching element (short-circuits, returns null if not found)
 - [**First**](stdlib/array/first/) - Return first element of array without modifying it
 - [**GroupBy**](stdlib/array/groupby/) - Group array of objects by field value into keyed object
 - [**IndexOf**](stdlib/array/indexof/) - Find index of substring in string or element in array
@@ -98,6 +101,7 @@ Miscellaneous functions for inspecting and testing data types, value generation,
 - [**InvokeRestMethod**](stdlib/utility/invokerestmethod/) - Execute HTTP REST API requests (experimental)
 - [**IsNull**](stdlib/utility/isnull/) - Test if value is null
 - [**Keys**](stdlib/utility/keys/) - Get array of property names from an object
+- [**Merge**](stdlib/utility/merge/) - Combine multiple objects into one (later args override earlier)
 - [**NewGuid**](stdlib/utility/newguid) - Generate a new globally unique identifier (GUID)
 - [**Values**](stdlib/utility/values/) - Get array of property values from an object
 - [**NotEqual**](stdlib/utility/notequal/) - Test inequality between two values
