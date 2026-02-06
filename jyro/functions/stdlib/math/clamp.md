@@ -86,4 +86,4 @@ var currentPage = Clamp(requestedPage, 1, totalPages)
 
 ## Notes
 
-- If min is greater than max, returns min
+- If min is greater than max, an error is thrown

@@ -9,48 +9,52 @@ permalink: /jyro/functions/stdlib/math/min/
 
 # Min
 
-Returns the minimum numeric value from a variable number of arguments.
+Returns the minimum numeric value from an array.
 
 ## Syntax
 
 ```jyro
-Min(value1, value2, ...)
 Min(array)
 ```
 
 ## Parameters
 
-- **value1, value2, ...** (number): Multiple numeric values to compare, OR
-- **array** (array): A single array of numeric values
+- **array** (array): An array of numeric values
 
 ## Returns
 
-- **number**: The minimum value found, or `null` if no numeric arguments provided
+- **number**: The minimum numeric value found, or `null` if the array is empty or contains no numeric values
 
 ## Description
 
-Accepts multiple numeric values or a single array and determines the smallest value among them. Non-numeric arguments are ignored during the comparison process.
+Finds the smallest numeric value in the array. Non-numeric items are ignored. Returns `null` if no numeric values are found.
 
 ## Examples
 
 ```jyro
-var result1 = Min(5, 10, 3, 8)         # Returns 3
+var result = Min([5, 10, 3, 8])  # Returns 3
 ```
 
 ```jyro
-var result2 = Min(-5, -2, -10)         # Returns -10
+var result = Min([-5, -2, -10])  # Returns -10
 ```
 
 ```jyro
-var result3 = Min(3.14, 2.71, 1.41)    # Returns 1.41
+var result = Min([3.14, 2.71, 1.41])  # Returns 1.41
 ```
 
 ```jyro
-var result4 = Min(42)                  # Returns 42
-```
-
-```jyro
-# Using with array
 var numbers = [5, 10, 3, 8]
-var result5 = Min(numbers)             # Returns 3
+var result = Min(numbers)  # Returns 3
 ```
+
+```jyro
+# Min of two values
+var result = Min([a, b])
+```
+
+## Notes
+
+- Returns `null` if the array is empty or contains no numeric values
+- Non-numeric items in the array are silently ignored
+- Related: `Max`, `Clamp`

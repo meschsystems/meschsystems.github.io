@@ -15,14 +15,14 @@ Rounds a numeric value to a specified number of decimal places using configurabl
 
 ```jyro
 Round(value)
-Round(value, digits)
-Round(value, digits, mode)
+Round(value, decimals)
+Round(value, decimals, mode)
 ```
 
 ## Parameters
 
 - **value** (number): The numeric value to round
-- **digits** (number, optional): Number of decimal places (defaults to 0, must be integer)
+- **decimals** (number, optional): Number of decimal places (defaults to 0, must be integer)
 - **mode** (string, optional): The rounding mode to use. Options:
   - `"floor"` - Round toward negative infinity
   - `"ceiling"` - Round toward positive infinity
@@ -35,7 +35,7 @@ Round(value, digits, mode)
 
 ## Description
 
-Rounds a numeric value to the specified number of decimal places using the chosen rounding mode. The default behavior uses banker's rounding (round half to even) for consistent mathematical behavior, but you can specify floor, ceiling, or away-from-zero modes.
+Rounds a numeric value to the specified number of decimal places using the chosen rounding mode. The default behaviour uses banker's rounding (round half to even) for consistent mathematical behaviour, but you can specify floor, ceiling, or away-from-zero modes.
 
 ## Examples
 
@@ -45,7 +45,7 @@ Rounds a numeric value to the specified number of decimal places using the chose
 var result = Round(3.14159, 2)  # Returns 3.14
 ```
 
-### Banker's rounding behavior
+### Banker's rounding behaviour
 
 ```jyro
 var result1 = Round(2.5)  # Returns 2 (rounds to even)
@@ -96,4 +96,4 @@ var result = Round(123.456)  # Returns 123
 - **Floor**: Always rounds toward negative infinity (not toward zero).
 - **Ceiling**: Always rounds toward positive infinity (not away from zero).
 - **Away**: Traditional mathematical rounding where 0.5 rounds away from zero.
-- Related: `Abs`, `Clamp`, `Min`, `Max`
+- Related: `Abs`, `Clamp`, `Floor`, `Ceiling`

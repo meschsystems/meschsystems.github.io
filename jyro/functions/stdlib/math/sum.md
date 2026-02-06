@@ -9,48 +9,47 @@ permalink: /jyro/functions/stdlib/math/sum/
 
 # Sum
 
-Calculates the sum of all numeric arguments provided to the function.
+Calculates the sum of all numeric values in an array.
 
 ## Syntax
 
 ```jyro
-Sum(value1, value2, ...)
 Sum(array)
 ```
 
 ## Parameters
 
-- **value1, value2, ...** (number): Multiple numeric values to sum, OR
-- **array** (array): A single array of numeric values
+- **array** (array): An array of numeric values
 
 ## Returns
 
-- **number**: The total sum of all numeric arguments, or `null` if no numeric arguments are provided
+- **number**: The total sum of all numeric values in the array (returns 0 if the array is empty or contains no numeric values)
 
 ## Description
 
-Accepts a variable number of numeric values or a single array and computes their total, ignoring non-numeric arguments. Returns `null` if no numeric arguments are provided.
+Sums all numeric values in the array, ignoring non-numeric items. Returns 0 if the array is empty or contains no numbers.
 
 ## Examples
 
 ```jyro
-var result1 = Sum(1, 2, 3, 4, 5)        # Returns 15
+var result = Sum([1, 2, 3, 4, 5])  # Returns 15
 ```
 
 ```jyro
-var result2 = Sum(10.5, 2.3, 1.2)       # Returns 14.0
+var result = Sum([10.5, 2.3, 1.2])  # Returns 14.0
 ```
 
 ```jyro
-var result3 = Sum(-5, 10, -3)           # Returns 2
+var result = Sum([-5, 10, -3])  # Returns 2
 ```
 
 ```jyro
-var result4 = Sum()                     # Returns `null`
-```
-
-```jyro
-# Using with array
 var numbers = [1, 2, 3, 4, 5]
-var result5 = Sum(numbers)              # Returns 15
+var result = Sum(numbers)  # Returns 15
 ```
+
+## Notes
+
+- Non-numeric items in the array are silently ignored
+- Returns 0 for an empty array
+- Related: `Average`, `Min`, `Max`
