@@ -144,6 +144,7 @@ Field-based query functions for filtering and projecting arrays of objects.
 | [Base64Decode](/jyro/stdlib/utility/base64decode/) | Decodes a Base64 string to UTF-8 | No, returns new string | Yes (string) |
 | [Base64Encode](/jyro/stdlib/utility/base64encode/) | Encodes a string to Base64 | No, returns new string | Yes (string) |
 | [Clone](/jyro/stdlib/utility/clone/) | Creates a deep copy of a value | No, returns new value | Yes |
+| [Diff](/jyro/stdlib/utility/diff/) | Compares two objects and returns a structured summary of their differences | No, returns new object | Yes (object) |
 | [Coalesce](/jyro/stdlib/utility/coalesce/) | Returns the first non-null value from an array | No | Depends on result type |
 | [FromJson](/jyro/stdlib/utility/fromjson/) | Parses a JSON string into a Jyro value | No, returns new value | Depends on result type |
 | [HasProperty](/jyro/stdlib/utility/hasproperty/) | Tests whether an object has a property (even if null) | No | No |
@@ -155,3 +156,4 @@ Field-based query functions for filtering and projecting arrays of objects.
 | [ToString](/jyro/stdlib/utility/tostring/) | Converts a value to its string representation | No, returns new string | Yes (string) |
 | [TypeOf](/jyro/stdlib/utility/typeof/) | Returns the type name as a string | No | No |
 | [Values](/jyro/stdlib/utility/values/) | Returns all property values as an array | No, returns new array | Yes (array) |
+| [Sleep](/jyro/stdlib/utility/sleep/) | Pauses script execution for the specified number of milliseconds | No | No |
