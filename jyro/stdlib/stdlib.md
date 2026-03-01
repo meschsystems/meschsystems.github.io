@@ -77,7 +77,7 @@ Higher-order functions that accept inline lambda expressions as arguments.
 
 | Function | Description | Mutates | Chainable |
 |----------|-------------|---------|-----------|
-| [Abs](/jyro/stdlib/math/abs/) | Returns the absolute value of a number | No | No |
+| [Absolute](/jyro/stdlib/math/absolute/) | Returns the absolute value of a number | No | No |
 | [Average](/jyro/stdlib/math/average/) | Returns the arithmetic mean of numeric values | No | No |
 | [Ceiling](/jyro/stdlib/math/ceiling/) | Rounds up to the nearest integer | No | No |
 | [Clamp](/jyro/stdlib/math/clamp/) | Constrains a number to a min/max range | No | No |
