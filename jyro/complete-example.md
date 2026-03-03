@@ -29,7 +29,7 @@ end
 if Length(Data.orders) == 0 then
     Data.summary = {count: 0, total: 0}
     Data.processed = []
-    return "No orders to process"
+    exit "No orders to process"
 end
 
 # 2. Quick validation
@@ -75,5 +75,5 @@ Data.processed = SortByField(processed, "total", "desc")
 # 6. Create export view
 Data.export = Project(Data.processed, ["id", "amount", "total", "processedAt"])
 
-return "Processed " + count + " orders"
+exit "Processed " + count + " orders"
 ```

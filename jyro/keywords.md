@@ -18,11 +18,15 @@ The following identifiers are reserved and cannot be used as variable names.
 
 ## Declaration
 
-`var`
+`var`, `func`
 
 ## Control flow
 
-`if`, `then`, `elseif`, `else`, `end`, `switch`, `case`, `default`, `return`, `fail`
+`if`, `then`, `elseif`, `else`, `end`, `switch`, `case`, `default`, `return`, `exit`, `fail`
+
+## Unions and pattern matching
+
+`union`, `match`
 
 ## Iteration
 

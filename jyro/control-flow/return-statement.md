@@ -10,37 +10,52 @@ nav_order: 130
 
 # `return` Statement
 
-The `return` statement terminates the script immediately with a success status. It accepts an optional string message that must appear on the **same line**.
+The `return` statement exits a [user-defined function](/jyro/user-functions/) and sends a value back to the caller. It is only valid inside a `func` body - using `return` at the script's top level is a compiler error.
 
 ```jyro
-return                              # Clean exit, no message
-return "Processing complete"        # Clean exit with message
+func Double(x: number)
+    return x * 2
+end
+
+Data.result = Double(5)    # 10
 ```
 
 ## Behaviour
 
-- The script stops executing at the `return` statement
-- The `Data` context is returned to the host with all modifications made up to that point
-- If a message is provided, it is reported to the host as an informational message
-
-## Message must be on the same line
-
-The message is part of the `return` statement syntax. If placed on a separate line, it becomes an independent string expression statement - not a return message.
+- Execution jumps back to the call site with the returned value
+- A bare `return` (no expression) returns `null`
+- If the function body reaches `end` without hitting a `return`, the function returns `null`
 
 ```jyro
-# CORRECT
-return "Done"
+func MaybeDouble(x)
+    if x is not number then
+        return              # returns null
+    end
+    return x * 2
+end
 
-# INCORRECT - "Done" is a separate statement that never executes
-return
-"Done"
+var a = MaybeDouble(5)      # 10
+var b = MaybeDouble("hi")   # null
 ```
 
-## Comparison with `fail`
+## Not valid at the top level
 
-| Keyword | Script Succeeds? | Message Severity |
-|---------|-----------------|------------------|
-| `return` | Yes | Info |
-| `fail` | No | Error |
+`return` is exclusively for functions. At the script's top level, use `exit` for clean termination and `fail` for error termination:
 
-Both keywords return the `Data` context to the host, regardless of success or failure. See [fail](/jyro/control-flow/fail/) for the failure counterpart.
+```jyro
+# INCORRECT - compiler error: return outside a function
+return "Done"
+
+# CORRECT - use exit at the top level
+exit "Done"
+```
+
+## Comparison with exit and fail
+
+| Keyword | Effect | Valid where |
+|---------|--------|-------------|
+| `return` | Return a value from a function | Inside functions only |
+| `exit` | Terminate the script cleanly (success) | Anywhere |
+| `fail` | Terminate the script with an error (failure) | Anywhere |
+
+`return` exits the current function. `exit` and `fail` terminate the entire script - even from inside functions. See [exit](/jyro/control-flow/exit-statement/) and [fail](/jyro/control-flow/fail-statement/) for details.

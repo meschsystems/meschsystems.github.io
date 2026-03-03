@@ -112,6 +112,19 @@ The `Args` array allows hosts to re-format messages using their own templates. F
 | 3401 | ExcessiveLoopNesting | Loop nesting exceeds maximum depth of {0} |
 | 3402 | NotIterableLiteral | Value of type {0} is not iterable |
 | 3403 | UnreachableCode | Unreachable code detected |
+| 3500 | ReturnOutsideFunction | 'return' can only be used inside a function |
+| 3501 | DataAccessInsideFunction | Cannot access 'Data' inside a function |
+| 3502 | UndeclaredVariableInFunction | Undeclared variable '{0}' in function '{1}' |
+| 3503 | FunctionNotAtTopLevel | Function declarations must be at the top level |
+| 3504 | NestedFunction | Functions cannot be nested inside other functions |
+| 3505 | DuplicateParameter | Duplicate parameter name '{0}' |
+| 3600 | UnionNotAtTopLevel | Union declarations must be at the top level |
+| 3601 | DuplicateVariant | Variant '{0}' is already defined |
+| 3602 | DuplicateVariantField | Duplicate field name '{0}' in variant '{1}' |
+| 3603 | NonExhaustiveMatch | Non-exhaustive match — missing variants: {0} |
+| 3604 | MatchBindingCountMismatch | Variant '{0}' has {1} fields but {2} bindings were provided |
+| 3605 | UnknownVariant | Unknown variant '{0}' in match |
+| 3606 | DuplicateMatchCase | Duplicate case for variant '{0}' |
 
 ### 4xxx - Linker
 
@@ -123,6 +136,8 @@ The `Args` array allows hosts to re-format messages using their own templates. F
 | 4102 | FunctionOverride | Function '{0}' overrides a built-in function |
 | 4200 | TooFewArguments | Function '{0}' requires at least {1} arguments, but {2} were provided |
 | 4201 | TooManyArguments | Function '{0}' accepts at most {1} arguments, but {2} were provided |
+| 4300 | VariantConstructorConflict | Variant constructor '{0}' conflicts with existing function '{0}' |
+| 4301 | VariantUndefined | Variant constructor '{0}' is not defined |
 
 ### 5xxx - Runtime
 

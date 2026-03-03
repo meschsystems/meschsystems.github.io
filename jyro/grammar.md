@@ -60,7 +60,8 @@ switch    do        case      default   while     for
 foreach   in        return    fail      break     continue
 and       or        not       is        true      false
 null      number    string    boolean   object    array
-to        downto    by
+to        downto    by        func      exit      union
+match
 ```
 
 ### 1.4 Literals
@@ -177,7 +178,8 @@ literal = number_literal | string_literal | boolean_literal | null_literal ;
 ### 2.1 Program structure
 
 ```ebnf
-program = ws , { statement } , EOF ;
+program = ws , { top_level_item } , EOF ;
+top_level_item = func_def | union_def | statement ;
 block = { statement } ;
 ```
 
@@ -190,12 +192,33 @@ statement = var_decl
           | for_stmt
           | foreach_stmt
           | switch_stmt
+          | match_stmt
           | return_stmt
+          | exit_stmt
           | fail_stmt
           | break_stmt
           | continue_stmt
           | assignment_stmt
           | expr_stmt ;
+```
+
+#### Function definition
+
+```ebnf
+param = identifier , [ ":" , type_keyword ] ;
+param_list = param , { "," , param } ;
+
+func_def = "func" , identifier , "(" , [ param_list ] , ")" , block , "end" ;
+```
+
+#### Union definition
+
+```ebnf
+variant_field = identifier , [ ":" , type_keyword ] ;
+variant_fields = variant_field , { "," , variant_field } ;
+variant = identifier , "(" , [ variant_fields ] , ")" ;
+
+union_def = "union" , identifier , { variant } , "end" ;
 ```
 
 #### Variable declaration
@@ -262,10 +285,34 @@ switch_stmt = "switch" , expression , "do" ,
               "end" ;
 ```
 
+#### Match statement
+
+```ebnf
+match_binding = identifier ;
+match_bindings = match_binding , { "," , match_binding } ;
+
+match_case_stmt = "case" , identifier , [ "(" , match_bindings , ")" ] , "then" , block ;
+match_case_expr = "case" , identifier , [ "(" , match_bindings , ")" ] , "then" , expression ;
+
+match_stmt = "match" , expression , "do" ,
+             { match_case_stmt } ,
+             "end" ;
+
+match_expr = "match" , expression , "do" ,
+             { match_case_expr } ,
+             "end" ;
+```
+
 #### Return statement
 
 ```ebnf
-return_stmt = "return" , [ expression ] ;  (* expression must begin on same line *)
+return_stmt = "return" , [ expression ] ;  (* only valid inside func_def; expression must begin on same line *)
+```
+
+#### Exit statement
+
+```ebnf
+exit_stmt = "exit" , [ expression ] ;  (* expression must begin on same line *)
 ```
 
 #### Fail statement
@@ -387,6 +434,7 @@ Note: Function calls are only valid when the base expression is an identifier. T
 
 ```ebnf
 primary_expr = lambda_expr
+             | match_expr
              | null_literal
              | boolean_literal
              | number_literal
@@ -466,7 +514,7 @@ Jyro supports the following runtime types. Type keywords are used in variable de
 
 2. **Block delimiters**: All compound statements use keyword pairs (`then`/`end`, `do`/`end`).
 
-3. **Same-line constraint**: For `return` and `fail` statements, the optional expression must begin on the same line as the keyword. A newline after the keyword is interpreted as a bare `return` or `fail`.
+3. **Same-line constraint**: For `return`, `exit`, and `fail` statements, the optional expression must begin on the same line as the keyword. A newline after the keyword is interpreted as a bare statement.
 
 4. **Object property keys**: Object literal keys may be unquoted identifiers (including keywords like `and` or `true`) or quoted strings.
 
@@ -477,3 +525,9 @@ Jyro supports the following runtime types. Type keywords are used in variable de
 7. **Switch fallthrough**: There is no fallthrough between cases. Each `case` block is implicitly terminated by the next `case`, `default`, or the closing `end` of the `switch` statement.
 
 8. **Comments**: Only single-line comments are supported, beginning with `#`.
+
+9. **Function definitions**: `func` declarations must appear at the top level. `return` is only valid inside function bodies. Functions cannot be nested.
+
+10. **Union definitions**: `union` declarations must appear at the top level. Variant names must be globally unique across all unions and cannot collide with built-in or user-defined function names.
+
+11. **Match exhaustiveness**: Every `match` must cover all variants of the union being matched. There is no `default` case in `match`.

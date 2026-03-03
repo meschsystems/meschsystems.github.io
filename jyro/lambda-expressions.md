@@ -112,3 +112,45 @@ var result = WhereByField(Data.users, field, "==", "Boston")    # Works
 var result = Where(Data.users, u => u[field] == "Boston") # Looks for a property literally named "address.city"
 ```
 
+## Lambdas vs user-defined functions
+
+Jyro has two ways to define reusable logic: lambdas and [user-defined functions](/jyro/user-functions/). They serve different purposes:
+
+| | Lambda | User-defined function |
+|---|---|---|
+| **Syntax** | `x => x * 2` | `func Double(x) ... end` |
+| **Scope** | Captures variables from enclosing scope | Isolated - only sees parameters and local `var`s |
+| **Data access** | Can read `Data` | Cannot access `Data` (compiler error) |
+| **Body** | Single expression | Block of statements (`if`, `while`, `var`, `return`, etc.) |
+| **Naming** | Anonymous - always inline | Named - callable from anywhere in the script |
+| **Hoisting** | Not hoisted | Hoisted - can be called before declaration |
+| **Use case** | Inline callbacks for `Map`, `Where`, `Reduce`, etc. | Reusable named logic with explicit parameters |
+
+Lambdas are lightweight inline expressions that close over their environment. Functions enforce an explicit interface - every dependency comes through the parameter list.
+
+```jyro
+# Lambda - captures 'multiplier' from the enclosing scope
+var multiplier = 3
+var scaled = Map(Data.values, x => x * multiplier)
+
+# Function - 'multiplier' must be passed as an argument
+func Scale(x, multiplier)
+    return x * multiplier
+end
+
+var scaled = Map(Data.values, x => Scale(x, 3))
+```
+
+Functions and lambdas compose naturally. Define complex logic in a function, then reference it from a lambda:
+
+```jyro
+func IsEligible(customer)
+    if customer.age < 18 then return false end
+    if customer.status != "active" then return false end
+    if customer.balance < 0 then return false end
+    return true
+end
+
+var eligible = Where(Data.customers, c => IsEligible(c))
+```
+

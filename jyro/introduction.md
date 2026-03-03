@@ -10,7 +10,7 @@ nav_order: 20
 
 # Introduction
 
-A Jyro script is a flat sequence of statements executed top-to-bottom. There are no modules, imports, or user-defined named functions. Scripts may call host-provided library functions (including the standard library). Jyro's security model is set up so that the host tightly controls what is available to scripts.
+A Jyro script is a sequence of statements executed top-to-bottom. There are no modules or imports. Scripts may define their own [user-defined functions](/jyro/user-functions/) and [discriminated unions](/jyro/discriminated-unions/), and call host-provided library functions (including the standard library). Function and union declarations are hoisted - they can be called before they appear in the source. Jyro's security model is set up so that the host tightly controls what is available to scripts.
 
 ## The `Data` context
 
@@ -62,7 +62,7 @@ Data.level1 = result
 
 ## Execution model
 
-Scripts execute statements sequentially from top to bottom. Execution ends when the last statement completes, or when a `return` or `fail` statement is encountered. The host environment enforces resource limits on execution time, statement count, loop iterations, and stack depth.
+Scripts execute statements sequentially from top to bottom. Execution ends when the last statement completes, or when an `exit` or `fail` statement is encountered. Inside [user-defined functions](/jyro/user-functions/), `return` exits the function and resumes at the call site. The host environment enforces resource limits on execution time, statement count, loop iterations, and stack depth.
 
 The language is fully sandboxed - there is no file I/O, network access, or system calls. All external interaction happens through the `Data` context and the host-provided standard library.
 

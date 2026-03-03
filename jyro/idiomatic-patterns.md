@@ -23,7 +23,7 @@ end
 
 if Length(Data.items) == 0 then
     Data.result = []
-    return "No items to process"
+    exit "No items to process"
 end
 
 if Data.email is null or Data.email == "" then
@@ -92,7 +92,7 @@ Data.count = Length(Data.items)
 Data.total = Sum(Select(Data.items, "price"))
 Data.hasItems = Length(Data.items) > 0
 Data.uniqueCategories = Distinct(Select(Data.items, "category"))
-return
+exit
 ```
 
 ## Chained transforms
@@ -140,6 +140,77 @@ var activeUsers = WhereByField(Data.users, "active", "==", true)
 Data.response = Project(activeUsers, ["id", "name", "email"])
 Data.sanitized = Omit(Data.users, ["password", "token", "secret"])
 ```
+
+## Validation helpers with functions
+
+Extract repetitive validation into pure functions. Each function validates one concern and either returns the value or terminates the script:
+
+```jyro
+func RequireString(value, fieldName)
+    if value is not string or value == "" then
+        fail fieldName + " is required"
+    end
+    return value
+end
+
+func RequireNumber(value, fieldName, min, max)
+    if value is not number then
+        fail fieldName + " must be a number"
+    end
+    if value < min or value > max then
+        fail fieldName + " must be between " + ToString(min) + " and " + ToString(max)
+    end
+    return value
+end
+
+var name = RequireString(Data.name, "name")
+var age = RequireNumber(Data.age, "age", 0, 150)
+Data.record = { "name": name, "age": age }
+```
+
+## Composing functions with lambdas
+
+Define complex logic in a function and reference it from a lambda. This keeps lambda expressions concise while the function handles multi-step logic:
+
+```jyro
+func IsEligible(customer)
+    if customer.age < 18 then return false end
+    if customer.status != "active" then return false end
+    if customer.balance < 0 then return false end
+    return true
+end
+
+var eligible = Where(Data.customers, c => IsEligible(c))
+Data.eligibleCount = Length(eligible)
+```
+
+## Union-based result handling
+
+Use a `Result` union to separate success from failure in a structured, compiler-checked way:
+
+```jyro
+union Result
+    Ok(value)
+    Error(message: string)
+end
+
+func Divide(a: number, b: number)
+    if b == 0 then
+        return Error("Division by zero")
+    end
+    return Ok(a / b)
+end
+
+var result = Divide(Data.numerator, Data.denominator)
+match result do
+    case Ok(v) then
+        Data.quotient = v
+    case Error(msg) then
+        Data.error = msg
+end
+```
+
+The caller must handle both cases - `match` enforces it. Compare this with returning `null` on error, where the caller might forget to check.
 
 ## "Private" members for metadata
 

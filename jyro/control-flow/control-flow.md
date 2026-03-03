@@ -10,4 +10,4 @@ nav_order: 100
 
 # Control Flow
 
-Jyro provides conditional branching with `if`/`elseif`/`else` and `switch` statements, plus two script termination keywords: `return` (success) and `fail` (failure). All block structures are terminated with the `end` keyword.
+Jyro provides conditional branching with `if`/`elseif`/`else` and `switch` statements, plus three termination keywords: `exit` (script success), `fail` (script failure), and `return` (function return). All block structures are terminated with the `end` keyword.

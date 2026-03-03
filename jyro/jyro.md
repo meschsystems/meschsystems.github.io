@@ -24,3 +24,5 @@ Key characteristics:
 - **Sandboxed** - no file I/O, network access, or system calls
 - **Resource-limited** - enforced limits on execution time, statements, loops, and stack depth
 - **Immutable standard library** - all library functions return new values and never mutate their inputs
+- **User-defined functions** - named, reusable, pure functions with explicit parameters and no access to `Data`
+- **Discriminated unions** - declare closed sets of tagged variants with compile-time exhaustive `match`

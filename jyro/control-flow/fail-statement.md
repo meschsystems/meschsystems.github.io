@@ -23,6 +23,7 @@ fail "Invalid input"                # Failure exit with message
 - The `Data` context is returned to the host with all modifications made up to that point
 - The message is reported to the host as an error
 - The host environment treats the script as having failed
+- `fail` terminates the entire script even when called from inside a [user-defined function](/jyro/user-functions/)
 
 ## Message must be on the same line
 
@@ -51,11 +52,12 @@ if AnyByField(Data.orders, "amount", "<", 0) then
 end
 ```
 
-## Comparison with `return`
+## Comparison with exit and return
 
-| Keyword | Script Succeeds? | Message Severity |
-|---------|-----------------|------------------|
-| `return` | Yes | Info |
-| `fail` | No | Error |
+| Keyword | Effect | Valid where |
+|---------|--------|-------------|
+| `fail` | Terminate the script with an error (failure) | Anywhere |
+| `exit` | Terminate the script cleanly (success) | Anywhere |
+| `return` | Return a value from a function | Inside functions only |
 
-Both keywords return the `Data` context to the host with all mutations applied. See [return](/jyro/control-flow/return/) for the success counterpart.
+All three keywords return the `Data` context to the host with all mutations applied. See [exit](/jyro/control-flow/exit-statement/) for the success counterpart and [return](/jyro/control-flow/return-statement/) for function returns.

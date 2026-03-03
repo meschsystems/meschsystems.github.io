@@ -215,17 +215,17 @@ RegexMatch(text, "[0-9]+")
 
 See [Strings - Regex Pattern Escaping](/jyro/literals/strings/#regex-pattern-escaping) for the full substitution table.
 
-## 15. `return`/`fail` message must be on the same line
+## 15. `exit`/`fail` message must be on the same line
 
-The `return` and `fail` keywords accept an optional string message, but it must appear on the **same line**. A string on the next line is parsed as a separate expression statement, not as the message.
+The `exit` and `fail` keywords accept an optional message, but it must appear on the **same line**. A string on the next line is parsed as a separate expression statement, not as the message. The same rule applies to `return` inside functions.
 
 ```jyro
-# INCORRECT - "message" is a standalone expression, not the return message
-return
+# INCORRECT - "message" is a standalone expression, not the exit message
+exit
 "message"
 
 # CORRECT - message on the same line
-return "message"
+exit "message"
 ```
 
 ## 16. `for` loop bounds are exclusive
@@ -314,4 +314,124 @@ The `Split` function preserves empty strings produced by adjacent or leading/tra
 ```jyro
 Split("a,,b", ",")        # ["a", "", "b"]
 Split(",a,b,", ",")       # ["", "a", "b", ""]
+```
+
+## 18. `return` is only valid inside functions
+
+`return` exits a user-defined function. Using `return` at the script's top level is a compiler error. Use `exit` for clean script termination and `fail` for error termination:
+
+```jyro
+# INCORRECT - compiler error: return outside a function
+return "done"
+
+# CORRECT - use exit at the top level
+exit "done"
+```
+
+## 19. Functions cannot access `Data`
+
+User-defined functions are pure - they cannot read or write `Data`. This is enforced by the compiler. Pass the values you need as arguments:
+
+```jyro
+# INCORRECT - compiler error: cannot access Data inside a function
+func Bad()
+    return Data.value
+end
+
+# CORRECT - pass the value as a parameter
+func Good(value)
+    return value * 2
+end
+Data.result = Good(Data.value)
+```
+
+## 20. Functions cannot capture variables (no closures)
+
+Functions only see their own parameters and locally declared variables. Variables from the enclosing script are not visible:
+
+```jyro
+var multiplier = 3
+
+# INCORRECT - compiler error: 'multiplier' is not declared
+func Scale(x)
+    return x * multiplier
+end
+
+# CORRECT - pass it as a parameter
+func Scale(x, multiplier)
+    return x * multiplier
+end
+```
+
+Lambdas _do_ capture variables from the surrounding scope. See [Lambda Expressions](/jyro/lambda-expressions/#lambdas-vs-user-defined-functions) for the comparison.
+
+## 21. Functions and unions must be declared at the top level
+
+`func` and `union` declarations must appear at the script's top level - not inside `if` blocks, loops, or other functions:
+
+```jyro
+# INCORRECT - compiler error
+if Data.mode == "advanced" then
+    func Helper(x)
+        return x * 2
+    end
+end
+
+# CORRECT - declare at the top level
+func Helper(x)
+    return x * 2
+end
+```
+
+## 22. Variant names are globally unique
+
+Each variant name in a `union` must be unique across all unions in the script. Variant names also cannot collide with built-in or user-defined function names, because constructors are registered as functions:
+
+```jyro
+# INCORRECT - 'Round' collides with built-in function
+union Shape
+    Round(radius: number)    # OK - no collision
+end
+
+# INCORRECT - 'Circle' in two unions
+union Shape2D
+    Circle(r: number)
+end
+union Shape3D
+    Circle(r: number)       # Error: duplicate variant name
+end
+```
+
+## 23. `match` has no `default` - exhaustiveness is required
+
+Unlike `switch`, `match` has no `default` case. Every variant of the union must be handled. If you forget a variant, the compiler reports an error:
+
+```jyro
+union Direction
+    North()
+    South()
+    East()
+    West()
+end
+
+# INCORRECT - compiler error: missing variants South, West
+match heading do
+    case North() then ...
+    case East() then ...
+end
+```
+
+## 24. `match` bindings are positional, not by name
+
+In a `match` case, bindings map to fields by position, not by name. The names you use in the `case` can differ from the field names in the union declaration:
+
+```jyro
+union Rect
+    Rect(width: number, height: number)
+end
+
+# 'w' binds to the first field (width), 'h' to the second (height)
+match shape do
+    case Rect(w, h) then w * h
+end
 ```
