@@ -72,7 +72,7 @@ func Label(value)
 end
 ```
 
-All parameters are **required**. Every call must supply exactly the number of arguments the function declares:
+By default, parameters are **required**. Every call must supply the expected number of arguments:
 
 ```jyro
 func Multiply(a, b)
@@ -85,6 +85,43 @@ Data.result = Multiply(3, 4, 5)    # Error: expected 2 arguments, got 3
 ```
 
 Parameter names must be unique within a function, and `Data` cannot be used as a parameter name.
+
+### Default parameter values
+
+A parameter can be made optional by assigning a default value with `=`. When the caller omits an optional argument (or passes `null`), the default value is used instead:
+
+```jyro
+func Greet(name, greeting = "Hello", excited = false)
+    var msg = greeting + ", " + name
+    if excited then
+        msg = msg + "!"
+    end
+    return msg
+end
+
+Data.a = Greet("Alice", "Hi", true)   # "Hi, Alice!"
+Data.b = Greet("Bob", "Hey")          # "Hey, Bob"
+Data.c = Greet("Charlie")             # "Hello, Charlie"
+Data.d = Greet("Dave", null)          # "Hello, Dave" — null triggers default
+```
+
+Default values and type hints can be combined:
+
+```jyro
+func TypedGreet(name: string, greeting: string = "Hello", excited: boolean = false)
+    var msg = greeting + ", " + name
+    if excited then
+        msg = msg + "!"
+    end
+    return msg
+end
+```
+
+Rules for default parameters:
+
+- Default values must be **literals** (numbers, strings, booleans, or `null`) - not expressions or variable references.
+- **Required parameters must come before optional parameters.** Placing a required parameter after an optional one is a compiler error.
+- When calling with positional arguments, optional arguments can only be omitted from the right - you cannot skip a middle optional argument.
 
 ## Return values
 
@@ -131,6 +168,52 @@ var valid = Where(Data.items, item => IsValid(item.price))
 
 var total = Reduce(Data.values, (sum, v) => sum + Double(v), 0)
 ```
+
+### Named arguments
+
+Instead of passing arguments by position, you can pass them by name using `paramName: value` syntax. Named arguments can appear in any order:
+
+```jyro
+func Greet(name, greeting = "Hello", excited = false)
+    var msg = greeting + ", " + name
+    if excited then
+        msg = msg + "!"
+    end
+    return msg
+end
+
+# Arguments in any order
+Data.a = Greet(excited: true, name: "Alice", greeting: "Hi")   # "Hi, Alice!"
+
+# Omit optional arguments freely
+Data.b = Greet(name: "Bob")                                     # "Hello, Bob"
+
+# Skip middle optional arguments
+Data.c = Greet(name: "Charlie", excited: true)                  # "Hello, Charlie!"
+
+# Provide all arguments
+Data.d = Greet(name: "Eve", greeting: "Hey", excited: false)    # "Hey, Eve"
+```
+
+Named arguments work with standard library functions too:
+
+```jyro
+# Substring(text, start, length?) — reorder freely
+Data.sub = Substring(start: 2, text: "Hello World")
+
+# PadLeft(text, length, padChar?) — skip optional padChar
+Data.pad = PadLeft(text: "hi", length: 8)
+
+# Replace(source, oldValue, newValue) — fully reordered
+Data.replaced = Replace(newValue: "World", oldValue: "X", source: "Hello X")
+```
+
+Rules for named arguments:
+
+- A call must use **either** all positional arguments **or** all named arguments - you cannot mix the two styles in a single call.
+- Every **required** parameter must be provided. Optional parameters with defaults can be omitted.
+- Each parameter name can only appear once per call.
+- The parameter name must match an actual parameter of the function being called.
 
 ## Function hoisting
 

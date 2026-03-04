@@ -118,6 +118,8 @@ The `Args` array allows hosts to re-format messages using their own templates. F
 | 3503 | FunctionNotAtTopLevel | Function declarations must be at the top level |
 | 3504 | NestedFunction | Functions cannot be nested inside other functions |
 | 3505 | DuplicateParameter | Duplicate parameter name '{0}' |
+| 3506 | RequiredParamAfterOptional | Required parameter '{0}' cannot follow optional parameter '{1}' in function '{2}' |
+| 3507 | DefaultValueNotLiteral | Default value for parameter '{0}' in function '{1}' must be a literal value |
 | 3600 | UnionNotAtTopLevel | Union declarations must be at the top level |
 | 3601 | DuplicateVariant | Variant '{0}' is already defined |
 | 3602 | DuplicateVariantField | Duplicate field name '{0}' in variant '{1}' |
@@ -136,6 +138,9 @@ The `Args` array allows hosts to re-format messages using their own templates. F
 | 4102 | FunctionOverride | Function '{0}' overrides a built-in function |
 | 4200 | TooFewArguments | Function '{0}' requires at least {1} arguments, but {2} were provided |
 | 4201 | TooManyArguments | Function '{0}' accepts at most {1} arguments, but {2} were provided |
+| 4202 | DuplicateNamedArgument | Duplicate named argument '{0}' in call to '{1}' |
+| 4203 | UnknownNamedArgument | Unknown parameter '{0}' in call to '{1}'. Available parameters: {2} |
+| 4204 | MissingRequiredNamedArgument | Required parameter '{0}' not provided in call to '{1}' |
 | 4300 | VariantConstructorConflict | Variant constructor '{0}' conflicts with existing function '{0}' |
 | 4301 | VariantUndefined | Variant constructor '{0}' is not defined |
 

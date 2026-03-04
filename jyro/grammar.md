@@ -169,7 +169,7 @@ literal = number_literal | string_literal | boolean_literal | null_literal ;
 | `{`    | Open brace                      |
 | `}`    | Close brace                     |
 | `,`    | Separator                       |
-| `:`    | Type annotation / object pair   |
+| `:`    | Type annotation / object pair / named argument |
 
 ---
 
@@ -205,11 +205,13 @@ statement = var_decl
 #### Function definition
 
 ```ebnf
-param = identifier , [ ":" , type_keyword ] ;
+param = identifier , [ ":" , type_keyword ] , [ "=" , literal ] ;
 param_list = param , { "," , param } ;
 
 func_def = "func" , identifier , "(" , [ param_list ] , ")" , block , "end" ;
 ```
+
+The optional `= literal` assigns a default value, making the parameter optional. Required parameters must precede optional parameters.
 
 #### Union definition
 
@@ -421,14 +423,19 @@ unary_expr = "++" , postfix_expr       (* prefix increment *)
 ```ebnf
 postfix_expr = primary_expr , { postfix_op } ;
 
-postfix_op = "(" , [ expression , { "," , expression } ] , ")"    (* function call *)
+named_arg = identifier , ":" , expression ;
+
+postfix_op = "(" , [ arg_list ] , ")"                               (* function call *)
            | "." , identifier                                       (* property access *)
            | "[" , expression , "]"                                 (* index access *)
            | "++"                                                   (* postfix increment *)
            | "--" ;                                                 (* postfix decrement *)
+
+arg_list = named_arg , { "," , named_arg }                          (* all named *)
+         | expression , { "," , expression } ;                      (* all positional *)
 ```
 
-Note: Function calls are only valid when the base expression is an identifier. The call `Name(args)` invokes the function `Name`.
+Note: Function calls are only valid when the base expression is an identifier. The call `Name(args)` invokes the function `Name`. A call must use either all positional or all named arguments - the two styles cannot be mixed.
 
 #### Precedence 13: primary (highest)
 
@@ -526,8 +533,10 @@ Jyro supports the following runtime types. Type keywords are used in variable de
 
 8. **Comments**: Only single-line comments are supported, beginning with `#`.
 
-9. **Function definitions**: `func` declarations must appear at the top level. `return` is only valid inside function bodies. Functions cannot be nested.
+9. **Function definitions**: `func` declarations must appear at the top level. `return` is only valid inside function bodies. Functions cannot be nested. Parameters may have default values (`= literal`), but required parameters must precede optional ones.
 
-10. **Union definitions**: `union` declarations must appear at the top level. Variant names must be globally unique across all unions and cannot collide with built-in or user-defined function names.
+10. **Named arguments**: A function call may use named arguments (`paramName: value`) instead of positional arguments. All arguments in a single call must be either all named or all positional - the two styles cannot be mixed. When using named arguments, arguments may appear in any order, and optional parameters can be omitted.
 
-11. **Match exhaustiveness**: Every `match` must cover all variants of the union being matched. There is no `default` case in `match`.
+11. **Union definitions**: `union` declarations must appear at the top level. Variant names must be globally unique across all unions and cannot collide with built-in or user-defined function names.
+
+12. **Match exhaustiveness**: Every `match` must cover all variants of the union being matched. There is no `default` case in `match`.
