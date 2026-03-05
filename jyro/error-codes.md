@@ -123,7 +123,7 @@ The `Args` array allows hosts to re-format messages using their own templates. F
 | 3600 | UnionNotAtTopLevel | Union declarations must be at the top level |
 | 3601 | DuplicateVariant | Variant '{0}' is already defined |
 | 3602 | DuplicateVariantField | Duplicate field name '{0}' in variant '{1}' |
-| 3603 | NonExhaustiveMatch | Non-exhaustive match — missing variants: {0} |
+| 3603 | NonExhaustiveMatch | Non-exhaustive match - missing variants: {0} |
 | 3604 | MatchBindingCountMismatch | Variant '{0}' has {1} fields but {2} bindings were provided |
 | 3605 | UnknownVariant | Unknown variant '{0}' in match |
 | 3606 | DuplicateMatchCase | Duplicate case for variant '{0}' |

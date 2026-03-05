@@ -102,7 +102,7 @@ end
 Data.a = Greet("Alice", "Hi", true)   # "Hi, Alice!"
 Data.b = Greet("Bob", "Hey")          # "Hey, Bob"
 Data.c = Greet("Charlie")             # "Hello, Charlie"
-Data.d = Greet("Dave", null)          # "Hello, Dave" — null triggers default
+Data.d = Greet("Dave", null)          # "Hello, Dave" - null triggers default
 ```
 
 Default values and type hints can be combined:
@@ -198,13 +198,13 @@ Data.d = Greet(name: "Eve", greeting: "Hey", excited: false)    # "Hey, Eve"
 Named arguments work with standard library functions too:
 
 ```jyro
-# Substring(text, start, length?) — reorder freely
+# Substring(text, start, length?) - reorder freely
 Data.sub = Substring(start: 2, text: "Hello World")
 
-# PadLeft(text, length, padChar?) — skip optional padChar
+# PadLeft(text, length, padChar?) - skip optional padChar
 Data.pad = PadLeft(text: "hi", length: 8)
 
-# Replace(source, oldValue, newValue) — fully reordered
+# Replace(source, oldValue, newValue) - fully reordered
 Data.replaced = Replace(newValue: "World", oldValue: "X", source: "Hello X")
 ```
 

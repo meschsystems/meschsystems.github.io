@@ -65,7 +65,7 @@ obj["dynamicKey"] = "value"
 
 ## Deleting properties
 
-The `delete` keyword removes a property from an object entirely — the key is gone, not just set to null.
+The `delete` keyword removes a property from an object entirely - the key is gone, not just set to null.
 
 ```jyro
 Data.user = {name: "alice", password: "secret", role: "admin"}
@@ -81,8 +81,8 @@ delete Data.user[field]             # Removes "role" from Data.user
 **Rules:**
 - `delete` only works on property access (`obj.key`) and bracket access (`obj["key"]`)
 - `delete` on a non-existent property is a no-op (no error)
-- `delete` on a bare variable (`delete myVar`) is a compile-time error — variables cannot be deleted
-- `delete Data` is a compile-time error — `Data` itself cannot be removed
+- `delete` on a bare variable (`delete myVar`) is a compile-time error - variables cannot be deleted
+- `delete Data` is a compile-time error - `Data` itself cannot be removed
 - The target expression must be on the same line as `delete`
 
 This is the only way to completely remove a key from the `Data` context. Setting a property to `null` leaves the key present in the output; `delete` removes it entirely.

@@ -550,4 +550,4 @@ Jyro supports the following runtime types. Type keywords are used in variable de
 
 12. **Match exhaustiveness**: Every `match` must cover all variants of the union being matched. There is no `default` case in `match`.
 
-13. **Delete targets**: The `delete` statement only accepts property access and index access expressions. Bare identifiers are not valid delete targets — variables cannot be deleted. The target expression must begin on the same line as `delete`.
+13. **Delete targets**: The `delete` statement only accepts property access and index access expressions. Bare identifiers are not valid delete targets - variables cannot be deleted. The target expression must begin on the same line as `delete`.

@@ -139,7 +139,7 @@ union Direction
     West()
 end
 
-# Error: non-exhaustive match — missing variants: South, West
+# Error: non-exhaustive match - missing variants: South, West
 match heading do
     case North() then
         Data.y = Data.y + 1
