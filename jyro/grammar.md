@@ -61,7 +61,7 @@ foreach   in        return    fail      break     continue
 and       or        not       is        true      false
 null      number    string    boolean   object    array
 to        downto    by        func      exit      union
-match
+match     delete
 ```
 
 ### 1.4 Literals
@@ -198,6 +198,7 @@ statement = var_decl
           | fail_stmt
           | break_stmt
           | continue_stmt
+          | delete_stmt
           | assignment_stmt
           | expr_stmt ;
 ```
@@ -328,6 +329,14 @@ fail_stmt = "fail" , [ expression ] ;  (* expression must begin on same line *)
 ```ebnf
 break_stmt = "break" ;
 continue_stmt = "continue" ;
+```
+
+#### Delete statement
+
+```ebnf
+delete_target = property_access | index_access ;
+
+delete_stmt = "delete" , delete_target ;  (* target must begin on same line *)
 ```
 
 #### Expression statement
@@ -521,7 +530,7 @@ Jyro supports the following runtime types. Type keywords are used in variable de
 
 2. **Block delimiters**: All compound statements use keyword pairs (`then`/`end`, `do`/`end`).
 
-3. **Same-line constraint**: For `return`, `exit`, and `fail` statements, the optional expression must begin on the same line as the keyword. A newline after the keyword is interpreted as a bare statement.
+3. **Same-line constraint**: For `return`, `exit`, `fail`, and `delete` statements, the expression must begin on the same line as the keyword. For `return`, `exit`, and `fail` a newline after the keyword is interpreted as a bare statement. For `delete` the target is required.
 
 4. **Object property keys**: Object literal keys may be unquoted identifiers (including keywords like `and` or `true`) or quoted strings.
 
@@ -540,3 +549,5 @@ Jyro supports the following runtime types. Type keywords are used in variable de
 11. **Union definitions**: `union` declarations must appear at the top level. Variant names must be globally unique across all unions and cannot collide with built-in or user-defined function names.
 
 12. **Match exhaustiveness**: Every `match` must cover all variants of the union being matched. There is no `default` case in `match`.
+
+13. **Delete targets**: The `delete` statement only accepts property access and index access expressions. Bare identifiers are not valid delete targets — variables cannot be deleted. The target expression must begin on the same line as `delete`.

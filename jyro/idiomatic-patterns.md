@@ -141,6 +141,25 @@ Data.response = Project(activeUsers, ["id", "name", "email"])
 Data.sanitized = Omit(Data.users, ["password", "token", "secret"])
 ```
 
+## Scrubbing sensitive fields from Data
+
+Use `delete` to remove properties directly from `Data`. This is the only way to completely remove keys from the output, since `Data` cannot be reassigned:
+
+```jyro
+# Remove sensitive fields before returning to host
+delete Data.password
+delete Data.token
+delete Data.user.secret
+
+# Dynamic scrubbing
+var sensitiveFields = ["ssn", "creditCard", "pin"]
+foreach field in sensitiveFields do
+    delete Data[field]
+end
+```
+
+Note: `Omit` works on arrays of objects and returns a new array. `delete` works directly on any single object, including `Data` itself.
+
 ## Validation helpers with functions
 
 Extract repetitive validation into pure functions. Each function validates one concern and either returns the value or terminates the script:

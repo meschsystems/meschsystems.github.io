@@ -24,6 +24,10 @@ The following identifiers are reserved and cannot be used as variable names.
 
 `if`, `then`, `elseif`, `else`, `end`, `switch`, `case`, `default`, `return`, `exit`, `fail`
 
+## Mutation
+
+`delete`
+
 ## Unions and pattern matching
 
 `union`, `match`
