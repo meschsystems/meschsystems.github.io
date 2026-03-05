@@ -89,6 +89,7 @@ Higher-order functions that accept inline lambda expressions as arguments.
 | [Mode](/jyro/stdlib/math/mode/) | Returns the most frequently occurring value | No | No |
 | [Power](/jyro/stdlib/math/power/) | Raises a number to a specified power | No | No |
 | [RandomInt](/jyro/stdlib/math/randomint/) | Generates a cryptographically secure random integer | No | No |
+| [Round](/jyro/stdlib/math/round/) | Rounds a number to a specified precision with configurable tie-breaking | No | No |
 | [SquareRoot](/jyro/stdlib/math/squareroot/) | Returns the square root of a number | No | No |
 | [Sum](/jyro/stdlib/math/sum/) | Returns the sum of all numeric values in an array | No | No |
 
